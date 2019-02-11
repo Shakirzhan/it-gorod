@@ -1,0 +1,267 @@
+	<!-- Begin page -->
+	<div class="container">
+	
+	<!-- Modal Dialog -->
+	
+	<!-- Modal Logout Primary -->
+	<div class="md-modal md-fall" id="logout-modal">
+		<div class="md-content">
+			<h3><strong>{if $language=='en'}Logout{else}Выход{/if}</strong> {if $language=='en'}Confirmation{else}Подтверждение{/if}</h3>
+			<div>
+				<p class="text-center">{if $language=='en'}Are you sure want to logout from this awesome system?{else}Вы уверены, что хотите выйти?{/if}</p>
+				<p class="text-center">
+				<button class="btn btn-danger md-close">{if $language=='en'}Nope!{else}Нет{/if}</button>
+				<a href="{$FRAMEWORK.http_dir}/user/controller/quit/" class="btn btn-success md-close">{if $language=='en'}Yeah, I'm sure{else}Да{/if}</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Logout Alternatif -->
+	<div class="md-modal md-just-me" id="logout-modal-alt">
+		<div class="md-content">
+			<h3><strong>{if $language=='en'}Logout{else}Выход{/if}</strong> {if $language=='en'}Confirmation{else}Подтверждение{/if}</h3>
+			<div>
+				<p class="text-center">{if $language=='en'}Are you sure want to logout from this awesome system?{else}Вы уверены, что хотите выйти?{/if}</p>
+				<p class="text-center">
+				<button class="btn btn-danger md-close">{if $language=='en'}Nope!{else}Нет{/if}</button>
+				<a href="{$FRAMEWORK.http_dir}/user/controller/quit/" class="btn btn-success md-close">{if $language=='en'}Yeah, I'm sure{else}Да{/if}</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal save -->
+	<div class="md-modal" id="save-modal">
+		<div class="md-content">
+			<h3><strong class="md-title">{if $language=='en'}Save{else}Сохранение{/if}</strong></h3>
+			<div>
+				<p class="text-center md-message"></p>
+				<p class="text-center">
+				<button class="btn btn-success md-close">{if $language=='en'}Ok{else}Ок{/if}</button>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal Task Progress -->	
+	<div class="md-modal md-slide-stick-top" id="task-progress">
+		<div class="md-content">
+			<h3><strong>Task Progress</strong> Information</h3>
+			<div>
+				<p>CLEANING BUGS</p>
+				<div class="progress progress-xs for-modal">
+				  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+					<span class="sr-only">80&#37; Complete</span>
+				  </div>
+				</div>
+				<p>POSTING SOME STUFF</p>
+				<div class="progress progress-xs for-modal">
+				  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 65%">
+					<span class="sr-only">65&#37; Complete</span>
+				  </div>
+				</div>
+				<p>BACKUP DATA FROM SERVER</p>
+				<div class="progress progress-xs for-modal">
+				  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+					<span class="sr-only">95&#37; Complete</span>
+				  </div>
+				</div>
+				<p>RE-DESIGNING WEB APPLICATION</p>
+				<div class="progress progress-xs for-modal">
+				  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					<span class="sr-only">100&#37; Complete</span>
+				  </div>
+				</div>
+				<p class="text-center">
+				<button class="btn btn-danger btn-sm md-close">Close</button>
+				</p>
+			</div>
+		</div>
+	</div>
+		
+		
+		{include file='menu.html'}
+		
+		
+		
+		<!-- Start right content -->
+        <div class="right content-page">
+            <div class="header content rows-content-header">
+			
+			<!-- Button mobile view to collapse sidebar menu -->
+			<button class="button-menu-mobile show-sidebar">
+				<i class="fa fa-bars"></i>
+			</button>
+			
+             <div class="navbar navbar-default" role="navigation">
+				  <div class="container">
+					<div class="navbar-header">
+					  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<i class="fa fa-angle-double-down"></i>
+					  </button>
+					</div>
+					<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/index/config" title="Сборка от {$DATA.CONFIG.release|date_format:'%d.%m.%Y'}"><i class="fa fa-cog"> Версия {$DATA.CONFIG.version}</i></a></li>
+					</ul>
+					{if !empty($DATA.COUNT.PHRASE.timer)}<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/index/config" title="Текущее время"><i class="fa fa-clock-o"> {$DATA.COUNT.PHRASE.timer|date_format:'<strong>%H:%M</strong> %d.%m.%Y'} <small>{$DATA.COUNT.PHRASE.week_name}</small></i></a></li>
+					</ul>{/if}
+					{if !empty($DATA.COUNT.PHRASE.time)}<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/index/config" title="Время последнего обновления ставок"><i class="fa fa-legal"> <font class="{if $DATA.COUNT.PHRASE.expire} color_red{else}color_yellow{/if}">{$DATA.COUNT.PHRASE.time|date_format:'<strong>%H:%M</strong> %d.%m.%Y'}</font></i></a></li>
+					</ul>{/if}
+					{if !empty($USER.group) AND $USER.group==1 AND !empty($DATA.COUNT.PHRASE.count)}<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/index/config" title="Процент обновляемых фраз из запланированных (Кол-во обновляемых фраз из общего числа фраз)"><i class="fa fa-search-plus"> <font class="{if $DATA.COUNT.PHRASE.progress!=100}color_red{else}color_yellow{/if}">{$DATA.COUNT.PHRASE.progress}%</font> (<font class="color_yellow">{$DATA.COUNT.PHRASE.auction}</font> из {$DATA.COUNT.PHRASE.count})</i></a></li>
+					</ul>{/if}
+					{if !empty($USER.group) AND $USER.group==1 AND !empty($DATA.COUNT.PHRASE.interval)}<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/index/config" title="Скорость обновления ставок"><i class="fa fa-tachometer"> <font class="color_yellow">{$DATA.COUNT.PHRASE.interval}</font> мин.</i></a></li>
+					</ul>{/if}
+					{if !empty($USER.group) AND $USER.group==1 AND !empty($DATA.COUNT.PHRASE.report)}<ul class="nav navbar-nav">
+						<li><a href="{$FRAMEWORK.http_dir}/direct/statistic/index/" title="Состояние получения статистики по конверсиям"><i class="fa fa-bar-chart-o"> <font class="">{$DATA.COUNT.PHRASE.report|round}</font> %</i></a></li>
+					</ul>{/if}
+					
+					  {*<ul class="nav navbar-nav">
+						<li><a><i class="fa fa-cog"></i></a></li>
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown">English (US) <i class="fa fa-chevron-down i-xs"></i></a>
+						  <ul class="dropdown-menu animated half flipInX">
+							<li><a href="#">English (British)</a></li>
+							<li><a href="#">Bahasa Indonesia</a></li>
+							<li><a href="#">French</a></li>
+						  </ul>
+						</li>
+					  </ul>*}
+					  
+					  <ul class="nav navbar-nav navbar-right top-navbar">
+						{*<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i><span class="label label-danger absolute animated double shake">24</span></a>
+						  <ul class="dropdown-menu dropdown-message animated half flipInX">
+							<li class="dropdown-header notif-header">New Notifications</li>
+							<li class="divider"></li>
+								<li class="unread">
+									<a href="#">
+									<p><strong>John Doe</strong> Uploaded a photo <strong>&#34;DSC000254.jpg&#34;</strong>
+									<br /><i>2 minutes ago</i></p>
+									</a>
+								</li>
+								<li class="unread">
+									<a href="#">
+									<p><strong>John Doe</strong> Created an photo album  <strong>&#34;Indonesia Tourism&#34;</strong>
+									<br /><i>8 minutes ago</i></p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<p><strong>Annisa</strong> Posted an article  <strong>&#34;Yogyakarta never ending Asia&#34;</strong>
+									<br /><i>an hour ago</i></p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<p><strong>Ari Rusmanto</strong> Added 3 products
+									<br /><i>3 hours ago</i></p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<p><strong>Hana Sartika</strong> Send you a message  <strong>&#34;Lorem ipsum dolor...&#34;</strong>
+									<br /><i>12 hours ago</i></p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<p><strong>Johnny Depp</strong> Updated his avatar
+									<br /><i>Yesterday</i></p>
+									</a>
+								</li>
+							<li class="dropdown-footer"><a href=""><i class="fa fa-refresh"></i> Refresh</a></li>
+						  </ul>
+						</li>
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i><span class="label label-danger absolute animated double shake">24</span></a>
+						  <ul class="dropdown-menu dropdown-message animated half flipInX">
+							<li class="dropdown-header notif-header">New Messages</li>
+							<li class="divider"></li>
+								<li class="unread">
+									<a href="#">
+									<img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/avatar/2.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+									<strong>John Doe</strong><br />
+									<p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+									<p><i>5 minutes ago</i></p>
+									</a>
+								</li>
+								<li class="unread">
+									<a href="#">
+									<img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/avatar/1.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+									<strong>Annisa Rusmanovski</strong><br />
+									<p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+									<p><i>2 hours ago</i></p>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/avatar/3.jpg" class="xs-avatar ava-dropdown" alt="Avatar">
+									<strong>Ari Rusmanto</strong><br />
+									<p>Duis autem vel eum iriure dolor in hendrerit ...</p>
+									<p><i>5 hours ago</i></p>
+									</a>
+								</li>
+							<li class="dropdown-footer"><a href=""><i class="fa fa-share"></i> See all messages</a></li>
+						  </ul>
+						</li>*}
+						<li class="dropdown">
+						  <a href="#" class="dropdown-toggle" data-toggle="dropdown">{if $language=='en'}Howdy{else}Здравствуйте{/if}, <strong>{if !empty($USER.name)}{$USER.name}{else}{$USER.login}{/if}</strong> <i class="fa fa-chevron-down i-xs"></i></a>
+						  <ul class="dropdown-menu animated half flipInX">
+							<li><a href="{$FRAMEWORK.http_dir}/user/user/edit/param/id/{$USER.id}/">{if $language=='en'}My Profile{else}Профиль{/if}</a></li>
+							{*<li class="divider"></li>
+							<li class="dropdown-header">Another action</li>
+							<li><a href="#">Help</a></li>
+							<li><a href="lock-screen.html">Lock me</a></li>*}
+							<li><a class="md-trigger" data-modal="logout-modal">{if $language=='en'}Logout{else}Выход{/if}</a></li>
+						  </ul>
+						</li>
+					  </ul>
+					</div><!--/.nav-collapse -->
+				  </div>
+				</div>
+            </div>
+			
+			
+			
+			<!-- ============================================================== -->
+			<!-- Start Content here -->
+			<!-- ============================================================== -->
+            <div id="scrolled" class="body content rows scroll-x scroll-y">
+			
+				{include file='path.html'}
+				
+				{include file='content.html'}
+			
+				<footer>
+				&copy; 2014-{date('Y')} <a href="http://direct-automate.ru" target="_blank" title="Директ-автомат.рф">{if $language=='en'}«Cloud-automate.ru»{else}«Директ-автомат.рф»{/if}</a>
+				</footer>
+			
+            </div>
+			<!-- ============================================================== -->
+			<!-- End content here -->
+			<!-- ============================================================== -->
+			
+			
+			
+			
+        </div>
+		<!-- End right content -->
+		
+		
+		
+		
+		
+		<!-- the overlay modal element -->
+		<div class="md-overlay"></div>
+		<!-- End of eoverlay modal -->
+		
+		
+		
+	</div>
+	<!-- End of page -->

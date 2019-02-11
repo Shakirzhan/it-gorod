@@ -1,0 +1,143 @@
+.page-form {
+    box-shadow: 0 0 0 5px transparentize($defaultColor, 0.9) inset;
+    margin-top: 60px;
+    padding: 0;
+}
+.form--descr {
+	padding: 80px 100px 80px 80px;
+}
+.form--data {
+    padding: 80px 60px;
+    position: relative;
+}
+.page-form .form--data {
+	padding: 80px 100px;
+    position: relative;
+}
+
+/* arrow */
+.page-form .form--data:after, .form--data:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.page-form .form--data:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-left-color: #ffffff;
+    border-width: 20px;
+    margin-top: -20px;
+}
+.page-form .form--data:before {
+    border-color: rgba(245, 27, 27, 0);
+    border-left-color: $accentColor;
+    border-width: 27px;
+    margin-top: -27px;
+}
+/* arrow */
+.form--data_bg {
+    background-color: $inverse;
+    border: 5px solid $accentColor;
+}
+.form--data_contacts {
+    margin-top: -90px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+.form--phone-num {
+    font-size: 2.4em;
+    font-weight: 300;
+}
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+.form-group_last {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+.required-star {
+    color: #e02222;
+    font-size: 18px;
+    font-weight: 400;
+    margin-left: 3px;
+    vertical-align: middle;
+}
+.form label {
+    color: transparentize($defaultColor, 0.5);
+}
+.form .form-group i {
+    color: transparentize($defaultColor, 0.5);
+    position: absolute;
+    right: 15px;
+    top: 20px;
+}
+.fluid-label {
+  position: relative;
+}
+.fluid-label input, .fluid-label textarea {
+	position: relative;
+}
+.fluid-label label {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	font-size: $fsxs;
+}
+.focused .form-control {
+	top: 0!important;
+}
+.fluid-label .input-field {
+	 padding: 22px 0 8px 0;
+}
+.form h2, .form h3 {
+	padding: 0 0 30px;
+    margin: 0;
+}
+.input-error {
+    font-size: $fsxs;
+    color: red;
+    margin-top: 5px;
+}
+
+@media (max-width: 1200px) {
+    .form--data, .form--descr {
+        padding: 60px 40px;
+    }
+    .page-form .form--data, .page-form .form--descr {
+         padding: 60px;
+    }
+}
+@media (max-width: 992px) {
+    .form--data {
+        padding: 60px 100px;
+    }
+    .form--descr {
+        padding: 60px 115px;
+    }
+    .form--data:after, .form--data:before {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    .form--data {
+        padding: 40px;
+    }
+    .form--descr {
+        padding: 40px 45px;
+    }
+    .form--phone-num {
+        font-size: 1.8em;
+        font-weight: 400;
+    }
+    .page-form .form--data {
+        padding: 30px;
+    }
+    .page-form .form--descr {
+        padding: 30px 35px;
+    }
+}

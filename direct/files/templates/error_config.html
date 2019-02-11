@@ -1,0 +1,125 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>Конфигурация</strong> (IP: {$DATA.ERROR.ip})</h2>
+							
+					<div class="table-responsive"><form class="save" action="">
+						<table data-sortable class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>Наименование</th>
+									<th>Значение</th>	
+									<th>Требуется</th>
+									<th>Статус</th>										
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr>
+									<td>Версия PHP</td>
+									<td>{$DATA.ERROR.php}</td>
+									<td>5.3.0 или выше</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>Версия MYSQL</td>
+									<td>{$DATA.ERROR.mysql}</td>
+									<td>5.0.0 или выше</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>Библиотека Json</td>
+									<td>{if $DATA.ERROR.json}включена{else}<font class="color_red">выключена</font>{/if}</td>
+									<td>Да</td>
+									<td>{if !empty($DATA.ERROR.json)}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>
+								<tr>
+									<td>Библиотека OpenSSL</td>
+									<td>{if $DATA.ERROR.ssl}включена{else}<font class="color_red">выключена</font>{/if}</td>
+									<td>Да</td>
+									<td>{if !empty($DATA.ERROR.ssl)}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>
+								<tr>
+									<td>Библиотека Mbstring</td>
+									<td>{if $DATA.ERROR.mbstring}включена{else}<font class="color_red">выключена</font>{/if}</td>
+									<td>Да</td>
+									<td>{if !empty($DATA.ERROR.mbstring)}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>								
+								<tr>
+									<td>Allow_url_fopen (php.ini)</td>
+									<td>{if $DATA.ERROR.fopen}включена{else}выключена{/if}</td>
+									<td>{if !$DATA.ERROR.fopen AND $DATA.ERROR.curl}Нет{else}Да{/if}</td>
+									<td>{if $DATA.ERROR.fopen OR $DATA.ERROR.curl}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>
+								<tr>
+									<td>Библиотека CURL</td>
+									<td>{if $DATA.ERROR.curl}включена{else}выключена{/if}</td>
+									<td>{if $DATA.ERROR.fopen}Нет{else}Да{/if}</td>
+									<td>{if $DATA.ERROR.fopen OR $DATA.ERROR.curl}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>
+								<tr>
+									<td>max_execution_time (php.ini)</td>
+									<td>{$DATA.ERROR.max_execution_time}</td>
+									<td>0 (без ограничений)</td>
+									<td>{if empty($DATA.ERROR.max_execution_time) OR $DATA.ERROR.max_execution_time>=3600}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>
+								<tr>
+									<td>memory_limit (php.ini)</td>
+									<td>{$DATA.ERROR.memory_limit}</td>
+									<td>1024M или выше</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>max_input_vars (php.ini)</td>
+									<td>{$DATA.ERROR.max_input_vars}</td>
+									<td>1000 или выше</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>post_max_size (php.ini)</td>
+									<td>{$DATA.ERROR.post_max_size}</td>
+									<td>8M или выше</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>default_socket_timeout (php.ini)</td>
+									<td>{$DATA.ERROR.default_socket_timeout}</td>
+									<td>900 или выше</td>
+									<td>Выполнено</td>
+								</tr>								
+								<tr>
+									<td>disable_functions (php.ini)</td>
+									<td>{$DATA.ERROR.disable_functions|replace:',':', '}</td>
+									<td>Нет</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>disable_classes (php.ini)</td>
+									<td>{$DATA.ERROR.disable_classes}</td>
+									<td>Нет</td>
+									<td>Выполнено</td>
+								</tr>
+								<tr>
+									<td>Размер базы данных </td>
+									<td>{$DATA.TABLE.mb} МБ</td>
+									<td>Меньше места на диске</td>
+									<td>Выполнено</td>
+								</tr>	
+								<tr>
+									<td>Привилегии базы данных </td>
+									<td>{$DATA.ERROR.PRIVILEGE.name}</td>
+									<td>Alter, Create, Delete, Drop, Index, Insert, Select, Update</td>
+									<td>{if $DATA.ERROR.PRIVILEGE.status}Выполнено{else}<font class="color_red">Не выполнено</font>{/if}</td>
+								</tr>								
+							</tbody>
+						</table>
+						</form>
+					</div>
+					
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

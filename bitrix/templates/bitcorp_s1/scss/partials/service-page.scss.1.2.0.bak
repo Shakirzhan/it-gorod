@@ -1,0 +1,115 @@
+.breadcrumb div {
+    display: inline-block;
+    color: transparentize($defaultColor, 0.3);
+    margin-right: 5px;
+    font-size: $fsxs;
+}
+.breadcrumb-item i {
+	margin-right: 5px;
+}
+.page-head {
+	background-color: $bgcolor;
+	/*border-bottom: 1px solid transparentize($defaultColor, 0.9);*/
+	background-size: cover;
+	background-position: center;
+}
+.page-head_compact {
+	border-bottom: 0;
+}
+.black-menu .page-head {
+	padding-top: 58px;
+}
+.page-head .container {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	position: relative;
+}
+.page-head h1 {
+	margin-top: 50px;
+}
+.page-head_compact h1 {
+    margin: 10px 0 0;
+    font-size: 2.2em;
+    font-weight: 500;
+}
+.page-head--text {
+	padding-top: 30px;
+	color: $defaultColor;
+	padding-bottom: 30px;
+}
+.page-head_inverse {
+	color: $inverse;
+}
+.page-head_inverse .page-head--text {
+	color: $inverse;
+}
+.page-head-row {
+	display: table;
+	width: 100%;
+}
+.page-head-row [class*="col-md-"] {
+	display: table-cell;
+	float: none;
+}
+.page-head_noimage [class*="col-md-"] {
+	display: block;
+	float: left;
+}
+.page-head--image {
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+.page-head--image_bottom {
+	vertical-align: bottom;
+}
+.page-head--image_bottom img {
+	margin-bottom: -30px;
+}
+/* chack */
+.only-banner-title{
+  margin-top: 0!important;
+  font-size: 2.2em;
+}
+.intro {
+	border-left: 2px solid $accentColor;
+	padding-left: 20px;
+}
+.proporties-line {
+	background-color: transparentize($accentColor, 0.2);
+	color: #ffffff;
+}
+.proporties-line span {
+	display: inline-block;
+	margin-right: 15px;
+}
+.proporties-line span:last-child {
+	margin-right: 0;
+}
+.proporties-line a {
+	color: #ffffff;
+}
+.proporties-line--right {
+    text-align: right;
+}
+.detail-page-wrapper .panel {
+	background-color: transparentize($defaultColor, 0.95);
+	padding: 30px;
+}
+.detail-page-wrapper .panel h2, 
+.detail-page-wrapper .panel.h2, 
+.detail-page-wrapper .panel h3, 
+.detail-page-wrapper .panel.h3, 
+.detail-page-wrapper .panel h4,
+.detail-page-wrapper .panel .h4 {
+	margin-top: 20px;
+}
+.detail-page-wrapper .panel h2:first-child, 
+.detail-page-wrapper .panel.h2:first-child, 
+.detail-page-wrapper .panel h3:first-child, 
+.detail-page-wrapper .panel.h3:first-child, 
+.detail-page-wrapper .panel h4:first-child,
+.detail-page-wrapper .panel .h4:first-child {
+	margin-top: 0;
+}
+

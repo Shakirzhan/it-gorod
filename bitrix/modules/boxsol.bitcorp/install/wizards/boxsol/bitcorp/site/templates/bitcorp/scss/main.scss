@@ -1,0 +1,313 @@
+@import "partials/variable";
+
+$breakpoints: (
+  "xs": 575px,
+  "sm": 767px,
+  "md": 991px,
+  "lg": 1199px,
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+   $width: map_get($breakpoints, $width);
+   @if $type == max {
+    $width: $width - 1px;
+   }
+   @media only screen and (#{$type}-width: $width) {
+    @content;
+   }
+  }
+}
+
+@mixin br($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin td($duration...) {
+    -moz-transition-duration:    $duration;
+    -o-transition-duration:      $duration;
+    -webkit-transition-duration: $duration;
+    transition-duration:         $duration;
+}
+
+@mixin d-flex() {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+@mixin align-items-center() {
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+@mixin justify-content-center() {
+	-webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+
+
+
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #ffffff;
+    color: $darkColor;
+	font-family: $fontMain;
+    font-size: 15px;
+    line-height: 22px;
+    font-variant-numeric: lining-nums;
+	-moz-font-feature-settings: "lnum";
+	-webkit-font-feature-settings: "lnum";
+	font-feature-settings: "lnum";
+}
+body.m-menu-opened {
+	overflow: hidden;
+}
+@import "partials/global";
+@import "partials/icons";
+@import "partials/buttons";
+@import "partials/forms";
+@import "partials/bootstrap-grid";
+
+/*Header*/
+.header {
+	background: #ffffff;
+	padding: 0; 
+	
+	p {
+		margin: 5px 0;
+	}
+}
+.header--row {
+	display: table;
+	width: 100%;
+}
+a.logo {
+    display: block;
+    height: 105px;
+    line-height: 90px;
+    padding: 5px 0;
+    text-decoration: none;
+}
+.header_compact a.logo {
+    display: block;
+    height: 85px;
+    line-height: 70px;
+    padding: 5px 0;
+    text-decoration: none;
+}
+.header_compact_fix {
+	position: fixed;
+	top: 0;
+	background-color: #ffffff;
+	width: 100%;
+	z-index: 123;
+	box-shadow: 0 2px 10px transparentize($defaultColor, 0.9);
+}
+.header_compact_fix .top-blockб, .header_compact_fix .info-row, .header_compact_fix .top-block {
+	display: none;
+}
+a.logo img {
+	display: inline-block;
+    margin-left: 0;
+    max-height: 100%;
+    max-width: 226px;
+    vertical-align: middle; 
+}
+.logo--img {
+	background-color: $accentColor;
+}
+.header [class*="col-md-"] {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+}
+.top-tagline {
+	color: $calm;
+	padding-left: 30px;
+}
+.header-contacts {
+	text-align: right;
+}
+.h-phone {
+	text-align: right; 
+	display: inline-block;
+	vertical-align: middle;
+
+	&--worktime {
+		color: $calm;
+	}
+
+	&--number {
+	font-size: 1.4em;
+		a {
+			color: $defaultColor;
+		}
+	}
+}
+.h-button {
+	display: inline-block;
+	margin: 0 0 0 40px;
+	vertical-align: middle;
+}
+.info-row {
+	position: relative;
+	padding: 5px 0;
+	color: #ffffff;
+}
+.info-row--close {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+	@include br(50%);
+	border: 1px solid #ffffff;
+	width: 24px;
+	height: 24px;
+	line-height: 22px;
+	text-align: center;
+	color: #ffffff;
+}
+.top-block {
+	padding: 5px 0;
+	border-bottom: 1px solid transparentize($defaultColor, 0.9);
+}
+.top-block [class*="col-sm-"] {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+}
+.top-block .btn {
+	margin-left: 30px;
+}
+.top-block--info {
+	color: $defaultColor;
+	font-size: $fssm;
+}
+.header_fix .second_header{
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header_fix .main-menu-wrapper{  
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/*Header end*/
+
+
+@import "partials/main-menu";
+@import "partials/slider";
+
+/*sidebar nav*/
+.nav {
+	margin: 0;
+	font-weight: 500;
+}
+.nav--item, .content-wrapper .nav--item {
+	@include td(0.2s);
+	position: relative;
+	padding: 0;
+	&:before {
+		display: none;
+	}
+}
+.nav--item:hover a {
+	color: $accentColor;
+}
+.nav--item > a {
+	padding: 20px 0;
+	display: block;
+	border-bottom: 1px solid transparentize($defaultColor, 0.95);
+	color: $defaultColor;
+	font-weight: bold;
+}
+.nav--item_active > a {
+	color: $accentColor;
+}
+.nav--item_child {
+	
+	> a {
+		border-bottom: 0;
+		padding-right: 30px;
+	}
+}
+.nav--item_child:after {
+	position: absolute;
+	right: 15px;
+	top: 20px;
+	font-family: 'fontAwesome';
+	content: "\f107";
+	font-size: 20px;
+}
+.nav--item:last-child a {
+	border-bottom: none;
+}
+.subnav {
+	padding-bottom: 15px;
+	font-size: 0.9em;
+}
+.subnav--item, .content-wrapper .subnav .subnav--item {
+	padding: 5px 20px;
+	margin-top: 0;
+}
+.subnav--item > a, .content-wrapper .subnav .subnav--item > a {
+	color: $defaultColor;
+}
+.content-wrapper .subnav .subnav--item:before, .content-wrapper .subnav .subnav--item:after {
+	display: none;
+}
+.subnav--item_active a, .content-wrapper .subnav .subnav--item_active a {
+	font-weight: bold;
+	color: $accentColor;
+}
+.subnav--item a:hover, .content-wrapper .subnav .subnav--item a:hover {
+	color: $accentColor;
+}
+/*/sidebar nav*/
+
+/*page 404*/
+.page-404 {
+	padding: 100px 0;
+}
+.icon-404 {
+	font-size: 20em;
+	color: $accentColor;
+	font-weight: 300;
+	line-height: 1em;
+	float: right;
+}
+/*/page 404*/
+
+
+
+@import "partials/teasers";
+@import "partials/services";
+@import "partials/services-2";
+@import "partials/service-page";
+@import "partials/contacts";
+@import "partials/projects";
+@import "partials/projects-2";
+@import "partials/peoples";
+@import "partials/rewiews";
+@import "partials/partners";
+@import "partials/products";
+@import "partials/components";
+@import "partials/cat-category";
+@import "partials/news";
+@import "partials/footer";
+@import "partials/mobile-menu";
+@import "partials/breadcrumbs";
+@import "partials/owl.theme.default";
+@import "partials/jqmodal";
+@import "partials/adaptive";
+/*slider end*/

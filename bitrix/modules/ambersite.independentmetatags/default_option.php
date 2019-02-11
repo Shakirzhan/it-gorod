@@ -1,0 +1,4 @@
+<?
+$ambersite_independentmetatags_default_option['ignored_parameters'] = 'finish; clear_cache; back_url_admin; backurl; back_url; action; BACKURL; BACK_URL; utm_source; show_include_exec_time; show_page_exec_time; show_sql_stat; bitrix_include_areas; clear_cache_session; ADD_TO_COMPARE_LIST; ORDER_BY; print; print_course; register; forgot_password; change_password; login; logout; auth; utm_source; utm_medium; utm_campaign; utm_content; fb_action_ids; utm_term; yclid; gclid; _openstat; from; referrer1; r1; referrer2; r2; referrer3; r3;';
+$ambersite_independentmetatags_default_option['alternative_method'] = 'N';
+?>

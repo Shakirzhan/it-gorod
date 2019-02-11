@@ -1,0 +1,51 @@
+.m-news--image {
+	width: 100px;
+	max-height: 180px;
+	float: left;
+	margin-right: 15px;
+}
+.m-news--date {
+	color: transparentize($defaultColor, 0.4);
+	margin-bottom: 10px;
+}
+.m-news--image img {
+	max-width: 100px;
+	display: block;
+}
+.m-news_with-img .m-news--text {
+	margin-left: 115px;
+}
+.m-news--text a {
+	color: $defaultColor;
+	display: inline-block;
+}
+.m-news--text a:hover {
+	color: $mainColor;
+}
+.g-news {
+	border-bottom: 1px solid $bgcolor;
+	padding: 30px 0;
+}
+.g-news--date {
+	color: $calm;
+	margin-bottom: 15px;
+}
+.g-news--title {
+    font-size: 1.1em;
+    font-weight: 700;
+    line-height: 1.3em;
+    margin-bottom: 15px;
+}
+.g-news--link {
+	margin-top: 15px;
+}
+.g-news-add-date {
+	color: $accentColor;
+}
+.news-detail-image {
+  	margin-right: 25px;
+    text-align: left;
+    max-width: 300px;
+    margin-bottom: 20px;
+    padding: 0;
+}

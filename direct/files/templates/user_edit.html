@@ -1,0 +1,83 @@
+<!-- Your awesome content goes here -->
+				<div class="row">
+					
+					
+				
+				
+				<div class="box-info animated fadeInDown">
+				<h2><strong>{if !empty($DATA.USER.ELEMENT)}{assign var="VALUE" value=$DATA.USER.ELEMENT[0]}Редактирование{else}Добавление{/if} {if $DATA.USER.PARAM.group=='account'}аккаунта Яндекс.Директ{else}пользователя{/if}</strong> </h2>
+					<form class="form-horizontal save" role="form" action="/user/user/save/">
+					  <input type="hidden" name="id" value="{$VALUE.id}" />
+					  <input type="hidden" name="status" value="1" />
+					  {if $USER.group==1}<input type="hidden" name="group" value="{if !empty($VALUE.group)}{$VALUE.group}{else}{if $DATA.USER.PARAM.group=='account'}4{else}1{/if}{/if}" />{/if}
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Логин{if $DATA.USER.PARAM.group=='account'} от аккаунта Яндекс.Директ{/if}</label>
+						<div class="col-sm-10"{if $DATA.USER.PARAM.group=='account'} data-toggle="tooltip" title="Логин от аккаунта Яндекс.Директ указывается без @yandex.ru. Обязательное поле"{/if}>
+						  <input type="text" class="form-control" id="input-text" name="login" value="{$VALUE.login}" placeholder="Логин{if $DATA.USER.PARAM.group=='account'} от аккаунта Яндекс.Директ{/if}"{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Пароль</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="Пароль для входа в программу Яндекс.Директ автомат (может отличаться от пароля яндекс, шифруется MD5)">
+						  <input type="password" class="form-control" id="input-text" name="password" value="" placeholder="Пароль для входа в программу Яндекс.Директ автомат"{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Фамилия</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="lastname" value="{$VALUE.lastname}" placeholder=""{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					 <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Имя</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="name" value="{$VALUE.name}" placeholder=""{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Отчество</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="middlename" value="{$VALUE.middlename}" placeholder=""{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="email" value="{$VALUE.email}" placeholder=""{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Телефон</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="phone" value="{$VALUE.phone}" placeholder=""{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru' AND $VALUE.login=='admin'} readonly{/if}>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label class="col-sm-2 control-label">Права</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="">
+							<div class="radio">
+							  <label>
+								<input type="radio" name="right" id="optionsRadios1" value="1"{if !isset($VALUE.right) OR !empty($VALUE.right)} checked{/if}>
+								Редактирование
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="right" id="optionsRadios2" value="0"{if isset($VALUE.right) AND empty($VALUE.right)} checked{/if}>
+								Просмотр
+							  </label>
+							</div>
+						</div>
+					  </div>
+					  
+					    {if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}{else}<center><button type="submit" class="btn btn-default">{if $language=='en'}Save{else}Сохранить{/if}</button> {if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}{else}<a class="btn btn-default masked"{if empty($VALUE.id) OR empty($VALUE.group) OR $VALUE.group!=4} style="display: none;"{/if} data-toggle="tooltip" title="Для получения «Токена» вы должны, сначала авторизоваться в соответствующем аккаунте Яндекс.Директ{if $ELEMENT.login} «{$ELEMENT.login}»{/if} в этом же браузере" href="https://oauth.yandex.ru/authorize?response_type=code&client_id={$DATA.CONFIG.id}&state={if !empty($VALUE.id)}{$VALUE.id}{else}%id%{/if}|{$smarty.server.HTTP_HOST}{if !empty($VALUE.id)}{$smarty.server.REQUEST_URI}{else}/{$FRAMEWORK.url}{$FRAMEWORK.controller}/{$FRAMEWORK.argument}/id/%id%/{/if}">{if !empty($VALUE.token)}Обновить токен{else}Получить токен{/if}</a>{/if}{if !empty($VALUE.id)} <button type="button" class="btn btn-default" onclick="location.href='{$FRAMEWORK.http_dir}/direct/user/delete/param/id/{$VALUE.id}/'">{if $language=='en'}Delete{else}Удалить{/if}</button>{/if}</center>{/if}
+					</form>					
+				</div>
+				<!-- End of your awesome content -->

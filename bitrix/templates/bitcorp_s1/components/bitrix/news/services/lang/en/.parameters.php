@@ -1,0 +1,18 @@
+<?
+$MESS["T_IBLOCK_DESC_NEWS_DATE"] = "Выводить дату элемента";
+$MESS["T_IBLOCK_DESC_NEWS_PICTURE"] = "Выводить изображение для анонса";
+$MESS["T_IBLOCK_DESC_NEWS_TEXT"] = "Выводить текст анонса";
+$MESS["T_IBLOCK_DESC_NEWS_USE_SHARE"] = "Отображать панель соц. закладок";
+$MESS["T_IBLOCK_DESC_NEWS_SHARE_HIDE"] = "Не раскрывать панель соц. закладок по умолчанию";
+$MESS["T_IBLOCK_DESC_NEWS_SHARE_TEMPLATE"] = "Шаблон компонента панели соц. закладок";
+$MESS["T_IBLOCK_DESC_NEWS_SHARE_SYSTEM"] = "Используемые соц. закладки и сети";
+$MESS["T_IBLOCK_DESC_NEWS_SHARE_SHORTEN_URL_LOGIN"] = "Логин для bit.ly";
+$MESS["T_IBLOCK_DESC_NEWS_SHARE_SHORTEN_URL_KEY"] = "Ключ для для bit.ly";
+$MESS["MD_FS_BLOCK_DESCRIPTION_TITLE"] = "Текст описания блока";
+$MESS ["MD_FS_BLOCK_DESCRIPTION_TITLE_DEFAULT"] = "Наша компания оказывает полный спектр услуг. У нашей компании прекрасная репутация, и мы уже успели завоевать доверие и расположение своих клиентов. Во многом это связано с широким спектром услуг, предоставляемых нашей компанией, а также высоким качеством обслуживания.";
+$MESS["MD_FS_SERVICE_SHOW_DESCRIPTION"] = "Показывать описание услуг";
+$MESS["MD_FS_SERVICE_COUNT_LINE"] = "Количество услуг в одной строке";
+$MESS ["MD_FS_USE_CHESS_BACKLIGHT"] = "Выделять элементы в шахматном стиле";
+$MESS ["MD_FS_SERVICE_ITEM_HEIGHT"] = "Высота блока одной услуги (px)";
+$MESS ["MD_FS_SERVICE_ITEM_HEIGHT_DEFAULT"] = "250";
+?>

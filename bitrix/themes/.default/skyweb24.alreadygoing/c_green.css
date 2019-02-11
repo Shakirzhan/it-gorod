@@ -1,0 +1,25 @@
+.alreadygoing.c_green {
+    background: #ecf0f1;
+    }
+
+.c_green {
+
+    }
+    .c_green .text {
+        color: #2c3e50;
+        }
+        .c_green .text h2 {
+            color: #27ae60;
+            }
+        .c_green .text h3 {
+            color: #27ae60;
+            }
+        .c_green .text .info {
+
+            }
+        .c_green .text .going_link {
+            background: #27ae60;
+            }
+        .c_green .text .going_link:hover {
+            background: #2ecc71;
+            }

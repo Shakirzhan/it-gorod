@@ -1,0 +1,86 @@
+.main-projects {
+    padding: 50px 0;
+}
+.project-2 {
+	padding-bottom: 60px;
+	&--img {
+		width: 100%;
+		height: 260px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		position: relative;
+		background-color:  transparentize($defaultColor, 0.9);
+	}
+	@include mq('xs', max) {
+		&--img {
+			height: 150px;
+		}
+	}
+	&--name {
+		padding-top: 20px;
+		span {
+			font-size: 1.1em;
+    		font-weight: bold;
+    		line-height: 1.3em;
+    		color: $defaultColor;
+		}
+	}
+	&--descr {
+		margin-top: 10px;
+		color: $defaultColor;
+		font-size: 0.9em;
+	}
+	a {
+		display: block;
+		.project-2--name span {
+			border-bottom: 1px solid transparentize($defaultColor, 0.9);
+		}
+		&:hover {
+			.project-2--name span {
+				border-bottom: 1px solid transparentize($defaultColor, 0.6);
+			}
+			.project-2--img {
+				&:after {
+					background-color: transparentize($accentColor, 0.15);
+					content: "";
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					position: absolute;
+					z-index: 1;
+				}
+			}
+			.project-2 {
+				&--name {
+					span {
+			    		color: $accentColor;
+					}
+				}
+			}
+		}
+	}
+	&--more {
+		opacity: 0;
+		visibility: hidden;
+		@include td(0.3s);
+		color: $inverse;
+		z-index: 103;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		right: 0;
+		text-align: center;
+		width: 100%;
+		margin-top: -10px;
+	}
+}
+.project-2 a:hover .project-2--more {
+	opacity: 1;
+	visibility: visible;
+}
+.project-2 a:hover .project-2--more i {
+	margin-left: 10px;
+	@include td(0.3s);
+}

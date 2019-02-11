@@ -1,0 +1,39 @@
+{if $FRAMEWORK.controller=="direct/index/config"}
+	{include file='config.html'}
+{elseif $FRAMEWORK.controller=="direct/index/article"}	
+	{include file='article.html'}
+{elseif $FRAMEWORK.controller=="direct/error/index"}	
+	{include file='error.html'}
+{elseif $FRAMEWORK.controller=="direct/error/table"}
+	{include file='error_table.html'}
+{elseif $FRAMEWORK.controller=="direct/error/update"}
+	{include file='error_update.html'}
+{elseif $FRAMEWORK.controller=="direct/error/config"}
+	{include file='error_config.html'}
+{elseif $FRAMEWORK.controller=="direct/index/cron"}	
+	{include file='cron.html'}
+{elseif $FRAMEWORK.controller=="direct/index/cron_edit"}	
+	{include file='cron_edit.html'}
+{elseif $FRAMEWORK.controller=="direct/strategy/get" AND $FRAMEWORK.argument}	
+	{include file='strategy_edit.html'}	
+{elseif $FRAMEWORK.controller=="direct/strategy/get"}	
+	{include file='strategies.html'}
+{elseif $FRAMEWORK.controller=="user/user/get"}
+	{include file='users.html'}
+{elseif $FRAMEWORK.controller=="user/user/edit"}
+	{include file='user_edit.html'}
+{elseif $FRAMEWORK.controller=="direct/statistic/index"}
+	{include file='statistic.html'}
+{elseif $FRAMEWORK.controller=="direct/statistic/price"}
+	{include file='statistic_price.html'}
+{elseif $FRAMEWORK.controller=="direct/statistic/clicks"}
+	{include file='statistic_clicks.html'}	
+{elseif $FRAMEWORK.controller=="direct/statistic/count"}
+	{include file='statistic_count.html'}		
+{else}
+	{if !empty($DATA.USER.ELEMENT)}
+		{include file='client.html'}
+	{else}
+		{include file='auction.html'}
+	{/if}
+{/if}

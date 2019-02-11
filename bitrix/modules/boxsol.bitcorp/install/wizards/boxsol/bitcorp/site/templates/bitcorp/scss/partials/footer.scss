@@ -1,0 +1,79 @@
+.footer {
+	background-color: $mainColor;
+	padding: 20px 0;
+	color: $inverse; 
+}
+.f-menu--item {
+	color: $inverse;
+	padding-right: 30px;
+	padding-top: 7px;
+	display: inline-block;
+}
+.f-menu--item span {
+	border-bottom: 1px solid transparent;
+	display: inline-block;
+}
+.f-menu--item:hover {
+	color: $inverse;
+}
+.f-menu--item:hover span {
+	border-bottom: 1px solid transparentize($inverse, 0.4);
+}
+.footer .social-icon {
+	margin-left: 5px;
+	margin-bottom: 5px;
+}
+.social-icon {
+	color: $inverse;
+	border: 1px solid transparentize($inverse, 0.5);
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	@include br(100%);
+	display: inline-block;
+	font-size: $fsxs;
+	@include td(0.3s);
+}
+.social-icon:hover {
+	box-shadow: 0 0 0 6px transparentize($inverse, 0.9);
+	color: $inverse; 
+}
+.social-icon_inverse {
+	color: $mainColor;
+	border: 1px solid $mainColor;
+}
+.social-icon_inverse:hover {
+	box-shadow: 0 0 0 6px transparentize($mainColor, 0.9);
+	color: $mainColor; 
+}
+.social-icon_xs {
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	font-size: 0.7em;
+}
+.footer--line {
+	padding-top: 20px;
+}
+.footer--line hr {
+	border-color: transparentize($inverse, 0.9);
+	margin: 0;
+}
+.footer--info {
+	padding-top: 20px;
+	margin-top: 20px;
+	border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer--contacts {
+	text-align: right; 
+}
+.f-phone-number {
+	font-size: $fsmid;
+}
+.f-phone-number, .f-phone-number a, .f-email, .f-email a {
+	color: #FFFFFF;
+}
+.footer--info .cop {
+	color: rgba(255,255,255,0.5);
+}

@@ -1,0 +1,129 @@
+<!-- Start sidebar menu -->
+		<div class="left side-menu">
+            <div class="header sidebar rows">
+				<div class="logo animated bounceIn">
+					<h1><a href="{$FRAMEWORK.http_dir}/"><img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/logo.png" alt="Logo"> {if $language=='en'}Admin{else}Директ автомат{/if}</a></h1>
+				</div>
+            </div>
+            <div class="body rows scroll-y animated fadeInLeftBig">
+                <div class="sidebar-inner slimscroller">
+					{*<div class="media">
+					  <a class="pull-left" href="#">
+						<img class="media-object img-circle" src="{$FRAMEWORK.http_dir}/files/templates/assets/img/logo-login.png" alt="Avatar">
+					  </a>
+					  <div class="media-body">
+					  {if $language=='en'}Welcome back{else}Здравствуйте{/if},
+						<h4 class="media-heading"><strong>{if !empty($USER.name)}{$USER.name}{else}{$USER.login}{/if}</strong></h4>
+						<a href="{$FRAMEWORK.http_dir}/user/user/edit/param/id/{$USER.id}/">{if $language=='en'}Edit{else}Ред.{/if}</a>
+						<a class="md-trigger" data-modal="logout-modal-alt">{if $language=='en'}Logout{else}Выход{/if}</a>
+					  </div>
+					</div>*}
+				
+					{*<!--<div id="search">
+						<form role="form">
+							<input type="text" class="form-control search" placeholder="Search here...">
+							<i class="fa fa-search"></i>
+						</form>
+					</div>-->*}
+				<div id="sidebar-menu">
+					<ul>
+						<li{if empty($FRAMEWORK.controller) 
+						OR $FRAMEWORK.controller=="direct/index/index" 
+						OR $FRAMEWORK.controller=="direct/index/company" 
+						OR $FRAMEWORK.controller=="direct/index/banner" 
+						OR $FRAMEWORK.controller=="direct/index/phrase"
+						OR $FRAMEWORK.controller=="direct/index/auction" } class="active"{/if}><a href="{$FRAMEWORK.http_dir}/"><i class="fa fa-legal"></i> {if $language=='en'}Dashboard{else}Ставки{/if}</a></li>
+						{if $USER.group==1}<li{if $FRAMEWORK.controller=="user/user/get" OR $FRAMEWORK.controller=="user/user/edit"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/user/user/get/param/group/account/"><i class="fa fa-user"></i> Аккаунты</a></li>{/if}
+						{if $USER.group==1 OR $USER.group==3}<li{if ($FRAMEWORK.controller=="user/user/get" OR $FRAMEWORK.controller=="user/user/edit") AND ($FRAMEWORK.argument=="param/group/admin")} class="active"{/if}><a href=""><i class="fa fa-users"></i><i class="fa fa-angle-double-down i-right"></i> Пользователи</a>
+							<ul>
+								{if $USER.group==1}<li><a href="{$FRAMEWORK.http_dir}/user/user/get/param/group/admin"><i class="fa fa-angle-right"></i> Администраторы</a></li>
+								<li><a href="{$FRAMEWORK.http_dir}/user/user/get/param/group/manager"><i class="fa fa-angle-right"></i> Представители</a></li>{/if}
+								<li><a href="{$FRAMEWORK.http_dir}/user/user/get/param/group/user"><i class="fa fa-angle-right"></i> Субклиенты</a></li>
+							</ul>
+						</li>{/if}
+						{if $USER.group==1}<li{if $FRAMEWORK.controller=="direct/strategy/get"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/strategy/get/"><i class="fa fa-signal"></i> Стратегии</a></li>{/if}
+						<li{if $FRAMEWORK.controller=="direct/statistic/index" 
+						OR $FRAMEWORK.controller=="direct/statistic/analize" 
+						OR $FRAMEWORK.controller=="direct/statistic/clicks" 
+						OR $FRAMEWORK.controller=="direct/statistic/price" 
+						OR $FRAMEWORK.controller=="direct/statistic/index" 
+						OR $FRAMEWORK.controller=="direct/statistic/count"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/statistic/index/"><i class="fa fa-bar-chart-o"></i><i class="fa fa-angle-double-down i-right"></i> Статистика</a>
+							<ul>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/statistic/index/"><i class="fa fa-angle-right"></i> Статистика</a></li>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/statistic/price/"><i class="fa fa-angle-right"></i> Лог ставок</a></li>
+								{if $USER.group==1}<li><a href="{$FRAMEWORK.http_dir}/direct/statistic/count/"><i class="fa fa-angle-right"></i> Объем рекламы</a></li>{/if}
+							</ul>
+						</li>
+						{if $USER.group==1}<li{if $FRAMEWORK.controller=="direct/index/cron" OR $FRAMEWORK.controller=="direct/index/cron_edit"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/cron/"><i class="fa fa-calendar"></i> Задания</a></li>{/if}
+						{if $USER.group==1}<li{if $FRAMEWORK.controller=="direct/index/config"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/config/"><i class="fa fa-wrench"></i> Настройки</a></li>{/if}
+						{if $USER.group==1}<li{if $FRAMEWORK.controller=="direct/error/index" 
+						OR $FRAMEWORK.controller=="direct/error/table"
+						OR $FRAMEWORK.controller=="direct/error/config"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/error/index/"><i class="fa fa-warning"></i><i class="fa fa-angle-double-down i-right"></i> Диагностика</a>
+							<ul>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/error/index/"><i class="fa fa-angle-right"></i> Ошибки</a></li>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/error/table/"><i class="fa fa-angle-right"></i> Таблицы</a></li>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/error/config/"><i class="fa fa-angle-right"></i> Конфигурация</a></li>
+								<li><a href="{$FRAMEWORK.http_dir}/direct/error/update/"><i class="fa fa-angle-right"></i> Обновление</a></li>
+							</ul>
+						</li>{/if}
+						<li{if $FRAMEWORK.controller=="direct/index/article"} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/article/documentation/"><i class="fa fa-picture-o"></i> Документация</a></li>
+						{*<li><a href=""><i class="fa fa-bug"></i><i class="fa fa-angle-double-down i-right"></i> Elements</a>
+							<ul>
+								<li><a href="element-primary.html"><i class="fa fa-angle-right"></i> Primary</a></li>
+								<li><a href="element-extended.html"><i class="fa fa-angle-right"></i> Extended</a></li>
+							</ul>
+						</li>
+						<li><a href=""><i class="fa fa-code"></i><i class="fa fa-angle-double-down i-right"></i> Widgets</a>
+							<ul>
+								<li><a href="widget-awesome.html"><i class="fa fa-angle-right"></i> Awesome</a></li>
+								<li><a href="widget-grid.html"><i class="fa fa-angle-right"></i> Grid</a></li>
+							</ul>
+						</li>
+						<li><a href=""><i class="fa fa-edit"></i><i class="fa fa-angle-double-down i-right"></i> Forms</a>
+							<ul>
+								<li><a href="form-element.html"><i class="fa fa-angle-right"></i> Form Element</a></li>
+								<li><a href="form-wizard.html"><i class="fa fa-angle-right"></i> Form Wizard</a></li>
+								<li><a href="form-validation.html"><i class="fa fa-angle-right"></i> Form Validation</a></li>
+							</ul>
+						</li>
+						<li><a href="tables.html"><i class="fa fa-table"></i> Tables</a></li>
+						<li><a href="gallery.html"><i class="fa fa-picture-o"></i><i class="fa fa-star i-right yellow"></i> Gallery</a></li>
+						<li><a href="graph.html"><i class="fa fa-bar-chart-o"></i>Graph</a></li>
+						<li><a href=""><i class="fa fa-home"></i><i class="fa fa-angle-double-down i-right"></i> Pages <span class="label label-success new-circle animated double shake span-left">10</span></a>
+							<ul>
+								<li><a href="login.html"><i class="fa fa-angle-right"></i> Login</a></li>
+								<li><a href="lock-screen.html"><i class="fa fa-angle-right"></i> Lock Screen</a></li>
+								<li><a href="register.html"><i class="fa fa-angle-right"></i> Register</a></li>
+								<li><a href="user-profile.html"><i class="fa fa-angle-right"></i> User Profile</a></li>
+								<li><a href="invoice.html"><i class="fa fa-angle-right"></i> Invoice</a></li>
+								<li><a href="pricing-table.html"><i class="fa fa-angle-right"></i> Pricing Table</a></li>
+								<li><a href="faq.html"><i class="fa fa-angle-right"></i> FAQ</a></li>
+								<li><a href="search-result.html"><i class="fa fa-angle-right"></i> Search Result</a></li>
+								<li><a href="404.html"><i class="fa fa-angle-right"></i> 404</a></li>
+								<li><a href="blank.html"><i class="fa fa-angle-right"></i> Blank</a></li>
+							</ul>
+						</li>
+						<li><a href=""><i class="fa fa-smile-o"></i><i class="fa fa-angle-double-down i-right"></i> Icons</a>
+							<ul>
+								<li><a href="font-awesome.html"><i class="fa fa-angle-right"></i> Font Awesome</a></li>
+								<li><a href="glyphicons.html"><i class="fa fa-angle-right"></i> Glyphicons</a></li>
+							</ul>
+						</li>
+						<li><a href="message.html"><i class="fa fa-envelope"></i>Message <span class="label label-danger new-circle animated double shake">35</span></a></li>
+						*}
+					</ul>
+					<div class="clear"></div>
+				</div>
+				</div>
+            </div>
+            {*<div class="footer rows animated fadeInUpBig">
+				<div class="progress progress-xs progress-striped active">
+				  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+					<span class="progress-precentage">80&#37;</span>
+				  </div>
+				  
+				  <a data-toggle="tooltip" title="See task progress" class="btn btn-default md-trigger" data-modal="task-progress"><i class="fa fa-inbox"></i></a>
+				</div>
+            </div>*}
+        </div>
+		<!-- End of sidebar menu -->

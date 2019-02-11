@@ -1,0 +1,377 @@
+{assign var="statistic_url" value="/direct/statistic/index/"}{assign var="statistic_name" value="Клики"}
+{if empty($DATA.PARAM.phrase)}
+				<div class="box-info animated fadeInDown">
+					<h2><strong>График ставок</strong></h2>
+					{include file='statistic_price_filter.html'}
+					<center><font class="color_pink">Необходимо выбрать клиента, кампанию, группу и фразу</font></center>
+				</div>
+{else}
+				<div class="box-info animated fadeInDown">
+					<h2><strong>График изменения ставок</strong> - №{$DATA.FILTER.SELECT.PHRASE.id} - {$DATA.FILTER.SELECT.PHRASE.name}</h2>
+					{include file='statistic_price_filter.html'}
+					<div id="morris-area-chart" style="height: 500px;"></div>
+				</div>
+<script>{literal}
+	
+		Morris.Line({
+		  element: 'morris-area-chart',
+		  data: [
+		  {/literal}
+		  {foreach from=$DATA.STATISTIC.ELEMENT item=VALUE}
+			{literal}{{/literal} y: '{$VALUE.datetime}', a: {$VALUE.position1}, b: {$VALUE.position4}, c: {$VALUE.position5}, d: {$VALUE.position8}, e: {$VALUE.price}, f: {$VALUE.real_price} {literal}}{/literal},
+		  {/foreach}
+		  {literal}
+		  ],
+		  xkey: 'y',
+		  ykeys: ['a', 'b', 'c', 'd', 'e', 'f'],
+		  labels: ['1 место спец.', 'Вход в спец.', '1 место гарантии', 'Вход в гарантию', 'Ставка', 'Цена клика' ],
+		  resize: true,
+		  lineColors: ['#f99518', '#f99518', '#5CB85C', '#5CB85C', '#2a6496', '#f8346a' ]
+		});
+	
+{/literal}</script>	
+				
+				<div class="box-info full">
+					<h2><strong>Средние значения ставок</strong> - №{$DATA.FILTER.SELECT.PHRASE.id} - {$DATA.FILTER.SELECT.PHRASE.name}</h2>
+						
+					<form class="save" action="/direct/save/phrase/">	
+					<div class="table-responsive">
+						<table data-sortable class="table table-hover table-striped" id="ver_realtrue">
+							<thead>
+								<tr style="height: 100px;">
+									<th>Кол-во</th>
+									<th class="color_blue vert"><span class="text_vertical"><span class="rotated-text__inner">Ставка</span></span></th>
+									<th class="color_yellow">1</th>
+									<th class="color_yellow">2</th>
+									<th class="color_yellow">3</th>
+									<th class="color_yellow">4</th>
+									<th class="color_green">5</th>
+									<th class="color_green">6</th>
+									<th class="color_green">7</th>
+									<th class="color_green">8</th>
+									<th class="color_pink vert"><span class="text_vertical"><span class="rotated-text__inner">Цена клика</span></span></th>									
+									<th class="color_yellow">1</th>
+									<th class="color_yellow">2</th>
+									<th class="color_yellow">3</th>
+									<th class="color_yellow">4</th>
+									<th class="color_green">5</th>
+									<th class="color_green">6</th>
+									<th class="color_green">7</th>
+									<th class="color_green">8</th>									
+									<th class="vert"><span class="text_vertical"><span class="rotated-text__inner">Позиция</span></span></th>
+								</tr>
+							</thead>
+							
+							<tbody>
+							
+								<tr>
+									<td>
+									<strong>Avg</strong> {$DATA.ANALIZE.count}
+									</td>
+									<td class="{if $DATA.ANALIZE.position>0 AND $DATA.ANALIZE.position<=4}color_yellow{elseif $DATA.ANALIZE.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.position1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.position2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.position3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.position4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.position5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.position6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.position7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.position8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.position>0 AND $DATA.ANALIZE.position<=4}color_yellow{elseif $DATA.ANALIZE.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.real_price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.price1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.price2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.price3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.price4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.price5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.price6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.price7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.price8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.position>0 AND $DATA.ANALIZE.position<=4}color_yellow{elseif $DATA.ANALIZE.position>4}color_green{else}color_red{/if}">
+									<strong>{if $DATA.ANALIZE.position>0 AND $DATA.ANALIZE.position<=4}{$DATA.ANALIZE.position}{elseif $DATA.ANALIZE.position>4}{$DATA.ANALIZE.position}{else}{$DATA.ANALIZE.position}{/if}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<strong>Max</strong>
+									</td>
+									<td class="{if $DATA.ANALIZE.MAX.position>0 AND $DATA.ANALIZE.MAX.position<=4}color_yellow{elseif $DATA.ANALIZE.MAX.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.MAX.price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.position1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.position2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.position3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.position4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.position5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.position6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.position7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.position8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.MAX.position>0 AND $DATA.ANALIZE.MAX.position<=4}color_yellow{elseif $DATA.ANALIZE.MAX.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.MAX.real_price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.price1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.price2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.price3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MAX.price4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.price5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.price6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.price7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MAX.price8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.MAX.position>0 AND $DATA.ANALIZE.MAX.position<=4}color_yellow{elseif $DATA.ANALIZE.MAX.position>4}color_green{else}color_red{/if}">
+									<strong>{if $DATA.ANALIZE.MAX.position>0 AND $DATA.ANALIZE.MAX.position<=4}{$DATA.ANALIZE.MAX.position}{elseif $DATA.ANALIZE.MAX.position>4}{$DATA.ANALIZE.MAX.position}{else}{$DATA.ANALIZE.MAX.position}{/if}</strong>
+									</td>
+								</tr>
+								<tr>
+									<td>
+									<strong>Min</strong>
+									</td>
+									<td class="{if $DATA.ANALIZE.MIN.position>0 AND $DATA.ANALIZE.MIN.position<=4}color_yellow{elseif $DATA.ANALIZE.MIN.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.MIN.price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.position1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.position2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.position3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.position4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.position5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.position6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.position7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.position8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.MIN.position>0 AND $DATA.ANALIZE.MIN.position<=4}color_yellow{elseif $DATA.ANALIZE.MIN.position>4}color_green{else}color_red{/if}">
+									<strong>{$DATA.ANALIZE.MIN.real_price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.price1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.price2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.price3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$DATA.ANALIZE.MIN.price4|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.price5|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.price6|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.price7|round:2}
+									</td>
+									<td class="color_green">
+									{$DATA.ANALIZE.MIN.price8|round:2}
+									</td>
+									<td class="{if $DATA.ANALIZE.MIN.position>0 AND $DATA.ANALIZE.MIN.position<=4}color_yellow{elseif $DATA.ANALIZE.MIN.position>4}color_green{else}color_red{/if}">
+									<strong>{if $DATA.ANALIZE.MIN.position>0 AND $DATA.ANALIZE.MIN.position<=4}{$DATA.ANALIZE.MIN.position}{elseif $DATA.ANALIZE.MIN.position>4}{$DATA.ANALIZE.MIN.position}{else}{$DATA.ANALIZE.MIN.position}{/if}</strong>
+									</td>
+								</tr>
+							
+							</tbody>
+						</table>
+						
+					</div></form>
+					
+				</div>
+				
+				<div class="box-info full">
+					<h2><strong>Лог ставок</strong> - №{$DATA.FILTER.SELECT.PHRASE.id} - {$DATA.FILTER.SELECT.PHRASE.name}</h2>
+					
+						{include file='statistic_price_filter.html'}
+						
+					<form class="save" action="/direct/save/phrase/">	
+					<div class="table-responsive">
+						<table data-sortable class="table table-hover table-striped" id="ver_realtrue">
+							<thead>
+								<tr style="height: 100px;">
+									<th>Дата</th>
+									<th class="color_blue vert"><span class="text_vertical"><span class="rotated-text__inner">Ставка</span></span></th>
+									<th class="color_yellow">1</th>
+									<th class="color_yellow">2</th>
+									<th class="color_yellow">3</th>
+									<th class="color_yellow">4</th>
+									<th class="color_green">5</th>
+									<th class="color_green">6</th>
+									<th class="color_green">7</th>
+									<th class="color_green">8</th>
+									<th class="color_pink vert"><span class="text_vertical"><span class="rotated-text__inner">Цена клика</span></span></th>
+									<th class="color_yellow">1</th>
+									<th class="color_yellow">2</th>
+									<th class="color_yellow">3</th>
+									<th class="color_yellow">4</th>
+									<th class="color_green">5</th>
+									<th class="color_green">6</th>
+									<th class="color_green">7</th>
+									<th class="color_green">8</th>									
+									<th class="vert"><span class="text_vertical"><span class="rotated-text__inner">Позиция</span></span></th>
+								</tr>
+							</thead>
+							
+							<tbody>
+							{foreach from=$DATA.STATISTIC.ELEMENT item=ELEMENT}
+								<tr>
+									<td class="{if $ELEMENT.position>0 AND $ELEMENT.position<=4}color_yellow{elseif $ELEMENT.position>4}color_green{else}color_red{/if}">
+									{$ELEMENT.datetime}
+									</td>
+									<td class="{if $ELEMENT.position>0 AND $ELEMENT.position<=4}color_yellow{elseif $ELEMENT.position>4}color_green{else}color_red{/if}">
+									<strong>{$ELEMENT.price|round:2}</strong>
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.position1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.position2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.position3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.position4|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.position5|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.position6|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.position7|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.position8|round:2}
+									</td>
+									<td class="{if $ELEMENT.position>0 AND $ELEMENT.position<=3}color_yellow{elseif $ELEMENT.position>3}color_green{else}color_red{/if}">
+									<strong>{$ELEMENT.real_price|round:2}</strong>
+									</td>	
+									<td class="color_yellow">
+									{$ELEMENT.price1|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.price2|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.price3|round:2}
+									</td>
+									<td class="color_yellow">
+									{$ELEMENT.price4|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.price5|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.price6|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.price7|round:2}
+									</td>
+									<td class="color_green">
+									{$ELEMENT.price8|round:2}
+									</td>									
+									<td class="{if $ELEMENT.position>0 AND $ELEMENT.position<=4}color_yellow{elseif $ELEMENT.position>4}color_green{else}color_red{/if}">
+									<strong>{if $ELEMENT.position>0 AND $ELEMENT.position<=4}{$ELEMENT.position}{elseif $ELEMENT.position>4}{$ELEMENT.position}{else}{$ELEMENT.position}{/if}</strong>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+					
+					</div></form>
+						
+					{if !empty($DATA.STATISTIC.PAGE.pages) AND $DATA.STATISTIC.PAGE.pages>1}	
+					<div class="data-table-toolbar">
+						<ul class="pagination">
+						  <li{if $DATA.STATISTIC.PAGE.page==$DATA.STATISTIC.PAGE.first} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/statistic/price/param/{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.STATISTIC.PAGE.first}/">&laquo;</a></li>
+						  {section name=page start=0 loop=$DATA.STATISTIC.PAGE.pages}
+						  <li{if $DATA.STATISTIC.PAGE.current==$smarty.section.page.iteration} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/statistic/price/param/{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$smarty.section.page.index}/">{$smarty.section.page.iteration}</a></li>
+						  {/section}
+						  <li{if $DATA.STATISTIC.PAGE.page==$DATA.STATISTIC.PAGE.last} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/statistic/price/param/{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.STATISTIC.PAGE.last}/">&raquo;</a></li>
+						</ul>
+					</div>
+					{/if}
+				<br><center>{include file='statistic_export_button.html'}</center><br>	
+				</div>
+{/if}						

@@ -1,0 +1,89 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>Объявления</strong></h2>
+					{include file='client_info.html'}	
+					{include file='auction_filter.html'}
+						{*<div class="data-table-toolbar">
+							<div class="row">
+								<div class="col-md-4">
+									<form role="form">
+									<input type="text" class="form-control" placeholder="Search...">
+									</form>
+								</div>
+								<div class="col-md-8">
+									<div class="toolbar-btn-action">
+										<a class="btn btn-success"><i class="fa fa-plus-circle"></i> Add new</a>
+										<a class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+										<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>
+									</div>
+								</div>
+							</div>
+						</div>*}
+					<form class="save" action="/direct/save/banner/">	
+					<div class="table-responsive">
+						<table data-sortable class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									{*<th style="width: 30px" data-sortable="false"><input type="checkbox" class="rows-check"></th>*}
+									<th>Наименование</th>
+									{include file='strategy_title.html'}
+									<th data-sortable="false">Сохранить</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+							{foreach from=$DATA.BANNER.ELEMENT item=ELEMENT}
+								<tr>
+									<td data-toggle="tooltip" title="{if !empty($ELEMENT.group)}Группа: №{$ELEMENT.group}{/if}">{if !empty($ELEMENT.STRATEGY.id) AND $ELEMENT.STRATEGY.id!=-1 AND $ELEMENT.expire}<font class="color_red">{/if}<strong>{$ELEMENT.id}</strong></font><br>
+									{if $ELEMENT.status==2}<font class="color_red">Остановлена</font><br>{/if}
+									<nobr>Расход: {$ELEMENT.sum|round:2}</nobr><br>
+									<nobr>Валюта: {if !empty($DATA.CURRENCY.ID[$ELEMENT.currency].name)}{$DATA.CURRENCY.ID[$ELEMENT.currency].code}{else}y.e.{/if}</nobr><br>
+									<nobr>Показов: {$ELEMENT.show}</nobr><br>
+									<nobr>Кликов: {$ELEMENT.click}</nobr><br>
+									<nobr>CTR: {$ELEMENT.ctr|round:2}%</nobr>
+									</td>
+									{*<td><input type="checkbox" class="rows-check"></td>*}
+									<td><a name="{$ELEMENT.id}"></a><strong><a href="{$FRAMEWORK.http_dir}/direct/index/phrase/param/where/3/{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}company/{$ELEMENT.company}/banner/{$ELEMENT.id}/">{$ELEMENT.name}</a></strong>{if !empty($ELEMENT.group)}<br>(Группа №{$ELEMENT.group}){/if}<br>{$ELEMENT.body}</td>
+									{include file='strategy.html'}
+									{*<td><span class="label label-success">Active</span></td>*}
+									<td>
+										<div class="btn-group btn-group-xs">
+											{*<a data-toggle="tooltip" title="Off" class="btn btn-default"><i class="fa fa-power-off"></i></a>*}
+											<button title="Сохранить" class="btn btn-default"><i class="fa fa-save"></i></button>
+											<a href="{$FRAMEWORK.http_dir}/direct/statistic/index/param/banner/{$ELEMENT.id}/" title="Статистика" class="btn btn-default"><i class="fa fa-bar-chart-o"></i></a>
+											<br>
+											<center>
+											{if !empty($ELEMENT.STRATEGY.id) AND $ELEMENT.STRATEGY.id!=-1}
+											<br>{if $ELEMENT.expire}<font class="color_red">Давно не обновлялись: {else}<font class="color_yellow">Последнее обновление ставок: {/if}</font><br>
+											{if $ELEMENT.expire}<font class="color_red">{/if}{if $ELEMENT.phrase_max_time}{$ELEMENT.phrase_max_time|date_format:'<strong>%H:%M</strong><br>%d.%m.%Y'}{else}не обновлялись{/if}</font>{else}<br>Не обновлять ставки{/if}
+											</center>
+										</div>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+						<br><center><button class="btn btn-default" type="submit">Сохранить</button></center><br>
+					</div>
+					</form>	
+					{if !empty($DATA.BANNER.PAGE.pages) AND $DATA.BANNER.PAGE.pages>1}	
+					<div class="data-table-toolbar">
+						<ul class="pagination">
+						  <li{if $DATA.BANNER.PAGE.page==$DATA.BANNER.PAGE.first} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/banner/param/where/2/{if !empty($DATA.PARAM.status)}status/{$DATA.PARAM.status}/{/if}{if !empty($DATA.PARAM.search)}search/{$DATA.PARAM.search}/{/if}{if !empty($DATA.PARAM.number)}number/{$DATA.PARAM.number}/{/if}{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.tag)}tag/{$DATA.PARAM.tag}/{/if}page/{$DATA.BANNER.PAGE.first}/">&laquo;</a></li>
+						  {section name=page start=0 loop=$DATA.BANNER.PAGE.pages}
+						  <li{if $DATA.BANNER.PAGE.current==$smarty.section.page.iteration} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/banner/param/where/2/{if !empty($DATA.PARAM.status)}status/{$DATA.PARAM.status}/{/if}{if !empty($DATA.PARAM.search)}search/{$DATA.PARAM.search}/{/if}{if !empty($DATA.PARAM.number)}number/{$DATA.PARAM.number}/{/if}{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.tag)}tag/{$DATA.PARAM.tag}/{/if}page/{$smarty.section.page.index}/">{$smarty.section.page.iteration}</a></li>
+						  {/section}
+						  <li{if $DATA.BANNER.PAGE.page==$DATA.BANNER.PAGE.last} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/banner/param/where/2/{if !empty($DATA.PARAM.status)}status/{$DATA.PARAM.status}/{/if}{if !empty($DATA.PARAM.search)}search/{$DATA.PARAM.search}/{/if}{if !empty($DATA.PARAM.number)}number/{$DATA.PARAM.number}/{/if}{if !empty($DATA.PARAM.user)}user/{$DATA.PARAM.user}/{/if}{if !empty($DATA.PARAM.company)}company/{$DATA.PARAM.company}/{/if}{if !empty($DATA.PARAM.tag)}tag/{$DATA.PARAM.tag}/{/if}page/{$DATA.BANNER.PAGE.last}/">&raquo;</a></li>
+						</ul>
+					</div>
+					{/if}
+					
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

@@ -1,0 +1,26 @@
+.alreadygoing.c_dark {
+    background: #2c3e50;
+    }
+
+.c_dark {
+
+    }
+    .c_dark .text {
+        color: #ecf0f1;
+        }
+        .c_dark .text h2 {
+            color: #fff;
+            }
+        .c_dark .text h3 {
+            color: #fff;
+            }
+        .c_dark .text .info {
+
+            }
+        .c_dark .text .going_link {
+            background: #fff;
+            color: #2c3e50;
+            }
+        .c_dark .text .going_link:hover {
+            background: #ecf0f1;
+            }

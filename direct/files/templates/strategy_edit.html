@@ -1,0 +1,162 @@
+<!-- Your awesome content goes here -->
+				<div class="row">
+					
+					
+				
+				
+				<div class="box-info animated fadeInDown">
+				<h2><strong>{if !empty($DATA.STRATEGY.ELEMENT)}{assign var="VALUE" value=$DATA.STRATEGY.ELEMENT[0]}Редактирование{else}Добавление{/if} стратегии{if !empty($VALUE.id)} #{$VALUE.id}{/if}</strong> </h2>
+					<form class="form-horizontal save" role="form" action="/direct/strategy/set/">
+					  <input type="hidden" name="id" value="{$VALUE.id}" />
+				
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Наименование</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="Обязательное поле">
+						  <input type="text" class="form-control" id="input-text" name="name" value="{$VALUE.name|htmlspecialchars}" placeholder="Наименование">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label class="col-sm-2 control-label">Формула</label>
+						<div class="col-sm-10">
+						  <textarea class="form-control" name="value" style="height: 325px;">{$VALUE.value}</textarea>
+						</div>
+					  </div>
+					  
+					  
+							
+					    {if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}{else}<center><button type="submit" class="btn btn-default">{if $language=='en'}Save{else}Сохранить{/if}</button>{if !empty($VALUE.id)} <button type="button" class="btn btn-default" onclick="location.href='{$FRAMEWORK.http_dir}/direct/strategy/copy/param/id/{$VALUE.id}/'">Копировать</button> <button type="button" class="btn btn-default" onclick="if (confirm('Удалить?')) location.href='{$FRAMEWORK.http_dir}/direct/strategy/delete/param/id/{$VALUE.id}/'">{if $language=='en'}Delete{else}Удалить{/if}</button>{/if}</center><br>{/if}
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Доступные свойства</label>
+						<div class="col-sm-10">
+							<div class="notes">{literal}
+								<p style="text-align: justify">
+ <p>
+Язык программирования формул PHP.<br>
+Официальный мануал: <a href="http://php.net">PHP.net</a><br>
+Переменные АПИ указываются без $, а функции АПИ без скобок "()".<br>
+В конце присваивания переменной или функции ставится точка с запятой(;).<br>
+Ветвление: ЕСЛИ (if), ИНАЧЕ ЕСЛИ (elseif), ИНАЧЕ (else), сравнить две переменные можно используя двойной знак равно (==), больше (>), меньше (<), больше или равно (>=), меньше или равно (<=), не равно - восклицательный знак и равно (!=), логическое И (AND), логическое ИЛИ (OR). <br>
+Несколько условий ветвления заключаются в фигурные скобки {}.<br>
+Пример: IF (переменная1 == переменная2 AND переменная3==переменная4) {переменная5=переменная1+переменная3;} ELSEIF (переменная1!=переменная2 OR переменная3!=переменная4) {переменная5=0;} ELSE переменная5=1;<br><br>
+							
+							Параметры доступные для формул. Пример: price=premium_min + premium_min*percent/100 + add; if (price>maximum) price=min_price; 
+							
+							<ul>
+								<li>price - ставка</li>
+									<li>bid1 (синоним position1) - 1 место спецразмещения ставка</li>
+									<li>bid2 (синоним position2) - 2 место спецразмещения ставка</li>
+									<li>bid3 (синоним position3) - 3 место спецразмещения ставка</li>
+									<li>bid4 - 4 место спецразмещения ставка (цена входа в спецразмещение)</li>
+									<li>bid5 (синоним position4) - 5 место гарантия ставка</li>
+									<li>bid6 (синоним position5) - 6 место гарантия ставка</li>
+									<li>bid7 (синоним position6) - 7 место гарантия ставка</li>
+									<li>bid8 (синоним position7) - 8 место гарантия ставка (цена входа в гарантию)</li>
+									<li>cost1 (синоним price1) - списываемая цена клика за 1 место</li>
+									<li>cost2 (синоним price2) - списываемая цена клика за 2 место</li>
+									<li>cost3 (синоним price3) - списываемая цена клика за 3 место</li>
+									<li>cost4 - списываемая цена клика за 4 место (цена входа в спецразмещение)</li>
+									<li>cost5 (синоним price4) - списываемая цена клика за 5 место</li>
+									<li>cost6 (синоним price5) - списываемая цена клика за 6 место</li>
+									<li>cost7 (синоним price6) - списываемая цена клика за 7 место</li>
+									<li>cost8 (синоним price7) - списываемая цена клика за 8 место (цена входа в гарантию)</li>
+									<li>real_price - списываемая цена клика</li>
+									<li>price_old - ставка до перезаписи</li>
+									<li>place - текущее место от 1 до 7 (1-3 спец.размещение, 4-7 гарантия, 0 - не видно или 2 страница)</li>
+									<li>step - шаг торгов в валюте кампании (0.1 руб)</li>
+									<li>min_price - минимальная ставка в валюте кампании (0.3 руб.)</li>
+									<li>max_price - максимальная ставка в валюте кампании (2800 руб.)</li>
+									<li>maximum - ограничение максимальной ставки</li>
+									<li>fixed - фиксированная ставка</li>
+									<li>percent - наценка в процентах</li>
+									<li>add - наценка в валюте аккаунта</li>
+									<li>type - признак наценки от разницы до 1 места. Значения: 1 - да, 0 - нет</li>
+									<li>fixed - фиксированная ставка</li>
+									<li>budget - ограничение бюджета по ключевой фразе</li>
+									<li>sum - расход за сегодня по ключевой фразе</li>
+									<li>click - клики за сегодня по ключевой фразе</li>
+									<li>show - показы за сегодня по ключевой фразе</li>
+									<li>ctr - ЦТР за сегодня по ключевой фразе, %</li>						
+									<li>banner_budget - ограничение бюджета по объявлению</li>
+									<li>banner_sum - расход за сегодня по объявлению</li>
+									<li>banner_click - клики за сегодня по объявлению</li>
+									<li>banner_show - показы за сегодня по объявлению</li>
+									<li>banner_ctr - ЦТР за сегодня по объявлению, %</li>
+									<li>banner_click28 - клики среднее за 28 дней по объявлению</li>
+									<li>banner_show28 - показы среднее за 28 дней по объявлению</li>
+									<li>banner_ctr28 - ЦТР среднее за 28 дней по объявлению, %</li>								
+									<li>company_budget - ограничение бюджета по кампании</li>
+									<li>company_sum - расход за сегодня по кампании</li>
+									<li>company_click - клики за сегодня по кампании</li>
+									<li>company_show - показы за сегодня по кампании</li>
+									<li>company_ctr - ЦТР за сегодня по кампании, %</li>
+									<li>company_click28 - клики среднее за 28 дней по кампании</li>
+									<li>company_show28 - показы среднее за 28 дней по кампании</li>
+									<li>company_ctr28 - ЦТР среднее за 28 дней по кампании, %</li>	
+									<li>context - РСЯ: включено или выключено управление ставками на тематических площадках (1 или 0)</li>
+									<li>context_price - РСЯ: ставка</li>
+									<li>context_percent - РСЯ: охват аудитории, %</li>
+									<li>context_optimum - РСЯ: ставка соответствующая охвату аудитории</li>
+									<li>context_max - РСЯ: ставка соответствующая 100% охвату аудитории</li>
+									<li>context_medium - РСЯ: ставка соответствующая 50% охвату аудитории</li>
+									<li>context_min - РСЯ: ставка соответствующая 20% охвату аудитории</li>
+									<li>context_fixed - РСЯ: ставка при отсутствии охвата</li>
+									<li>context_maximum - РСЯ: максимальная ставка</li>
+									<li>context_minimum - РСЯ: минимальная ставка</li>
+									<li>conversion - количество достигнутых целей за от 2 до 365 дней по фразе (Яндекс.Метрика)</li>
+									<li>roi - рентабельность инвестиций в рекламу за от 2 до 365 дней по фразе (Яндекс.Метрика)</li>
+									<li>revenue - доход - сумма показателей стоимости заказа за от 2 до 365 дней по фразе (Яндекс.Метрика)</li>
+									<li>depth - Глубина просмотра сайта по фразе (Яндекс.Метрика)</li>
+									<li>cost - цена достижения цели по фразе (Яндекс.Метрика)</li>
+									<li>sum365 - расход за год по фразе (интервал задается в настройки)</li>
+									<li>show365 - показы за год по фразе (интервал задается в настройки)</li>
+									<li>click365 - клики за год по фразе (интервал задается в настройки)</li>
+									<li>company - ID кампании в Яндекс.Директ</li>
+									<li>group - ID группы в Яндекс.Директ</li>
+									<li>banner - ID объявления в Яндекс.Директ</li>
+									<li>id - ID фразы в Яндекс.Директ</li>
+									<li>company_status - признак запущена ли кампания (1 - запущена, 2 - остановлена)</li>
+									<li>group_status - признак запущена ли группа (1 - запущена, 2 - остановлена)</li>
+									<li>status - признак запущена или на паузе фраза (1 - запущена, 2 - остановлена)</li>
+									<li>param1 - пользовательский параметр для каждой фразы (по умолчанию: 0.00)</li>
+									<li>param2 - пользовательский параметр для каждой фразы (по умолчанию: 0.00)</li>
+									<li>param3 - пользовательский параметр для каждой фразы (по умолчанию: 0.00)</li>
+									<li>position_value - позиция фразы в результатах поиска (Яндекс.XML)</li>
+									<li>datetime - текущие дата и время, формат YYYY-MM-DD HH:II:SS</li>
+									<li>date - текущая дата, формат YYYY-MM-DD</li>
+									<li>time - текущее время, формат HH:II:SS</li>
+									<li>week - текущий день недели, формат 0 - воскресенье, 1 - понедельник...6 - суббота</li>
+								
+							</ul>
+								{/literal}
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Доступные методы</label>
+						<div class="col-sm-10">
+							<div class="notes">
+								<p style="text-align: justify">
+								Функции доступные для формул. Пример: if (company_sum>company_budget) company_stop; else company_start; 
+								</p>
+								<ol>
+									<li>stop - Остановить ключевую фразу</li>
+									<li>start - Запустить ключевую фразу</li>
+									<li>banner_stop - Остановить объявление</li>
+									<li>banner_start - Запустить объявление</li>
+									<li>company_stop - Остановить кампанию</li>
+									<li>company_start - Запустить кампанию</li>
+									<li>place - позиция фразы вычисляемая по значению ставки</li>
+									<li>real - списываемая цена вычисляемая по значению ставки</li>
+									<li>link - проверка битых ссылок у объявлений (1 - валидная ссылка, 0 - не открывающаяся ссылка)</li>									
+								</ol>
+								
+							</div>
+						</div>
+					</div>
+					</form>					
+				</div>
+				
+				</div>
+				<!-- End of your awesome content -->

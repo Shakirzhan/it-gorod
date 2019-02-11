@@ -1,0 +1,64 @@
+.main-services {
+	padding: 50px 0;
+}
+.service {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0 -15px;
+    padding: 30px 20px;
+    transition: all 0.3s ease 0s;
+    height: 100%;
+    @include br(50px);
+}
+.service_center {
+	text-align: center;
+}
+.service:hover {
+	box-shadow: 0 0 0 4px transparentize($mainColor, 0.9);
+	@include br(5px);
+}
+.service--img img {
+	max-height: 150px;
+	max-width: 200px;
+}
+.service--img_icon {
+    margin: 0 auto;
+}
+.service--img_icon i, .service--img_icon i:hover {
+	line-height: 150px;
+	font-size: 5em;
+	color: $mainColor;
+	font-size: 5em;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    width: 150px;
+    background-color: transparentize($defaultColor, 0.95);
+    @include br(100px);
+}
+.service--title {
+	font-size: 1.1em;
+	margin-top: $marginmd;
+	font-weight: 700;
+	line-height: 1.3em;
+}
+.service--title span {
+	color: $darkColor; 
+}
+a .service--title span {
+	border-bottom: $blink;
+}
+a .service:hover .service--title span {
+	color: $accentColor;
+	border-bottom: $blinkhover;
+}
+.service--text {
+	margin-top: 30px;
+	margin-top: $marginsm;
+	color: transparentize($defaultColor, 0.3);
+	font-size: $fssm;
+} 
+.service--link {
+	display: block;
+	height: 100%;
+}

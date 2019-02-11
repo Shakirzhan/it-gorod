@@ -1,0 +1,37 @@
+#search-module fieldset {
+	margin: 0;
+	padding: 0;
+	border-style: none;
+}
+#search-module .search-form{
+	background: url(images/bg-textfield1.png) no-repeat;
+	width:355px;
+	height:36px;
+	margin:0 0 24px;
+}
+#search-module .search-form fieldset{padding:8px 12px 0 9px;}
+#search-module .search-form input{
+	font:100% Arial, Helvetica, sans-serif;
+	vertical-align: middle;
+	border:0;
+	display:block;
+	margin:0;
+	padding:0;
+}
+#search-module .search-form .text{
+	color:#000;
+	font-size:16px;
+	float:left;
+	background:none;
+	width:303px;
+}
+#search-module .search-form .submit{
+	background: url(images/btn-search-go.gif) no-repeat;
+	width:20px;
+	height:20px;
+	float:right;
+	overflow:hidden;
+	text-indent:-9999em;
+	cursor:pointer;
+	line-height:0;
+}

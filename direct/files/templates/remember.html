@@ -1,0 +1,39 @@
+{if (empty($USER))}<form id="form" class="remember"><input type="hidden" id="session" name="{$session_name}" value="{$session}">
+          <div class="wrapper">
+            <div class="grid_12 rel">
+              <article class="grid_6 alpha">
+				  <div class="success" style="display: none;">
+                  </div>
+                  <fieldset>
+                    <label class="login">
+                      <em>Логин (Номер договора):</em>
+                      <input type="text" name="login" value="">
+                        <span class="error" style="display: none;">* Неправильный логин</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+                    <label class="password">
+                      <em>Email:</em>
+                      <input type="text" name="email" value="">
+                        <span class="error" style="display: none;">* Неправильный пароль.</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="captcha">
+                      <em>Введите текст на изображении:</em>
+                      <input type="text" name="captcha" value="">
+					  <img id="captcha" style="border: 1px solid #000; margin: 5px; cursor: pointer;" src="/user/controller/captcha/?{$session_name}={$session}&sid={$time}" alt="Нажмите чтобы изменить код" title="Нажмите чтобы изменить код" align="left" onclick="this.src = '/user/controller/captcha/?{$session_name}={$session}&sid=' + Math.random(); return false" />
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+                  </fieldset>					
+				<div class="buttons2">
+                    <a href="#" data-type="submit" class="button">Напомнить пароль</a>
+                </div>
+              </article>
+              <div class="clear"></div>
+            </div>
+          </div>  
+        </form>
+	{else}
+				<center>
+                  <p>Вы авторизованы!<br>
+                      <strong><a href="{$FRAMEWORK.http_dir}/user/controller/index/" style="text-decoration: underline;">Личный кабинет</a></strong>
+                  </p>
+				 </center>
+	{/if}

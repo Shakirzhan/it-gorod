@@ -1,0 +1,46 @@
+.main-services {
+	padding: 50px 0;
+}
+.service {
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0 -15px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease 0s;
+}
+.service:hover {
+	box-shadow: 0 0 0 2px transparentize($mainColor, 0.7);
+}
+.service--img_icon {
+	border: 2px solid transparentize($mainColor, 0.5);
+	width: 160px;
+	height: 160px;
+	text-align: center;
+	border-radius: 100px;
+	margin: 0 auto;
+}
+.service:hover .service--img_icon {
+	border: 2px solid transparent;
+}
+.service--img_icon i, .service--img_icon i:hover {
+	line-height: 160px;
+	font-size: 4em;
+	color: $mainColor; 
+}
+.service--title {
+	color: $mainColor;
+	font-size: $fsmid;
+	margin-top: $marginmd;
+}
+.service--title span {
+	border-bottom: 1px solid transparentize($mainColor, 0.7);
+}
+.service--text {
+	margin-top: 30px;
+	margin-top: $marginsm;
+	color: $defaultColor;
+} 
+.service--link {
+	display: block;
+}

@@ -1,0 +1,213 @@
+
+					<div class="data-table-toolbar"><form class="filter" role="form" action="{$FRAMEWORK.http_dir}/direct/index/auction/" method="GET"><input type="hidden" name="page" value="0">
+							<div class="row">
+								<div class="col-md-3">
+									<select name="user" class="filter_user form-control" data-toggle="tooltip" title="Клиент">
+										<option value="">Все аккаунты</option>
+										{if !empty($DATA.FILTER.USER.ELEMENT)}
+											{foreach from=$DATA.FILTER.USER.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.user} selected{/if}>{$VALUE.login}{if !empty($VALUE.name)} - {$VALUE.name}{/if}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="company" class="filter_company form-control" data-toggle="tooltip" title="Кампания">
+										<option value="">Все кампании</option>
+										{if !empty($DATA.FILTER.COMPANY.ELEMENT)}
+											{foreach from=$DATA.FILTER.COMPANY.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.company} selected{/if}>{$VALUE.id} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="group" class="filter_group form-control" data-toggle="tooltip" title="Объявление">
+										<option value="">Все группы объявлений</option>
+										{if !empty($DATA.FILTER.GROUP.ELEMENT)}
+											{foreach from=$DATA.FILTER.GROUP.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.group} selected{/if}>{$VALUE.id} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="status" class="form-control" data-toggle="tooltip" title="Статус">
+										<option value="0">Все статусы</option>
+										<option value="1"{if $DATA.PARAM.status==1} selected{/if}>Запущенные</option>
+										<option value="2"{if $DATA.PARAM.status==2} selected{/if}>Остановленные</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 2px;">
+								<div class="col-md-3">
+									<input type="text" class="form-control" name="search" value="{$DATA.PARAM.search|urldecode|htmlspecialchars}" data-toggle="tooltip" title="Поиск по тексту" placeholder="Поиск">
+								</div>
+								<div class="col-md-3">
+									<select name="where" class="form-control" data-toggle="tooltip" title="Где искать">
+										<option value="1"{if $DATA.PARAM.where==1} selected{/if}>Искать в «Кампании»</option>
+										<option value="2"{if $DATA.PARAM.where==2} selected{/if}>Искать в «Группы»</option>
+										<option value="3"{if $DATA.PARAM.where==3} selected{/if}>Искать в «Фразы»</option>
+										<option value="4"{if $DATA.PARAM.where==4} selected{/if}>Искать в «Ретаргетинг»</option>
+									</select>
+								</div>	
+								{if !empty($DATA.FILTER.TAG.ELEMENT)}<div class="col-md-3">
+									<select name="tag" class="form-control" data-toggle="tooltip" title="Метки">
+										<option value="">Все метки</option>
+										
+											{foreach from=$DATA.FILTER.TAG.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.tag} selected{/if}>{$VALUE.name}</option>
+											{/foreach}
+										
+									</select>
+								</div>{/if}							
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="number" value="{if !empty($DATA.PARAM.number)}{$DATA.PARAM.number}{else}{$DATA.CONFIG.number}{/if}" data-toggle="tooltip" title="Количество записей" placeholder="Количество">
+								</div>												
+								<div class="col-md-1">	
+									<button class="btn btn-default" type="submit">Искать &#128269;</button>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 2px;">
+								<div class="col-md-3">
+									<select name="sort" class="form-control" data-toggle="tooltip" title="Сортировка">
+										<option value="0"{if empty($DATA.PARAM.sort)} selected{/if}>Сортировка по умолчанию</option>
+										<option value="id"{if $DATA.PARAM.sort=='id'} selected{/if}>Сортировка по «id»&uarr;</option>
+										<option value="-id"{if $DATA.PARAM.sort=='-id'} selected{/if}>Сортировка по «id»&darr;</option>
+										<option value="name"{if $DATA.PARAM.sort=='name'} selected{/if}>Сортировка по «наименованию»&uarr;</option>
+										<option value="-name"{if $DATA.PARAM.sort=='-name'} selected{/if}>Сортировка по «наименованию»&darr;</option>
+										<option value="strategy"{if $DATA.PARAM.sort=='strategy'} selected{/if}>Сортировка по «стратегии»&uarr;</option>
+										<option value="-strategy"{if $DATA.PARAM.sort=='-strategy'} selected{/if}>Сортировка по «стратегии»&darr;</option>
+										<option value="maximum"{if $DATA.PARAM.sort=='maximum'} selected{/if}>Сортировка по «макс. ставке»&uarr;</option>
+										<option value="-maximum"{if $DATA.PARAM.sort=='-maximum'} selected{/if}>Сортировка по «макс. ставке»&darr;</option>										
+										<option value="show"{if $DATA.PARAM.sort=='show'} selected{/if}>Сортировка по «показам»&uarr;</option>
+										<option value="-show"{if $DATA.PARAM.sort=='-show'} selected{/if}>Сортировка по «показам»&darr;</option>
+										<option value="click"{if $DATA.PARAM.sort=='click'} selected{/if}>Сортировка по «кликам»&uarr;</option>
+										<option value="-click"{if $DATA.PARAM.sort=='-click'} selected{/if}>Сортировка по «кликам»&darr;</option>
+										<option value="ctr"{if $DATA.PARAM.sort=='ctr'} selected{/if}>Сортировка по «CTR»&uarr;</option>
+										<option value="-ctr"{if $DATA.PARAM.sort=='-ctr'} selected{/if}>Сортировка по «CTR»&darr;</option>
+										<option value="conversion"{if $DATA.PARAM.sort=='conversion'} selected{/if}>Сортировка по «конверсиям»&uarr;</option>
+										<option value="-conversion"{if $DATA.PARAM.sort=='-conversion'} selected{/if}>Сортировка по «конверсиям»&darr;</option>
+										<option value="roi"{if $DATA.PARAM.sort=='roi'} selected{/if}>Сортировка по «ROI»&uarr;</option>
+										<option value="-roi"{if $DATA.PARAM.sort=='-roi'} selected{/if}>Сортировка по «ROI»&darr;</option>
+										<option value="revenue"{if $DATA.PARAM.sort=='revenue'} selected{/if}>Сортировка по «доходу»&uarr;</option>
+										<option value="-revenue"{if $DATA.PARAM.sort=='-revenue'} selected{/if}>Сортировка по «доходу»&darr;</option>										
+
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="strategy" class="form-control" data-toggle="tooltip" title="Стратегия">
+										<option value="0"{if empty($DATA.PARAM.strategy)} selected{/if}>Все стратегии</option>
+										{foreach from=$DATA.STRATEGY.ELEMENT item=VALUE}
+											{if empty($company) OR (!empty($company) AND $VALUE.id!=-1)}<option value="{if $VALUE.id==0}-3{else}{$VALUE.id}{/if}"{if !empty($DATA.PARAM.strategy) AND ((!empty($VALUE.id) AND $DATA.PARAM.strategy==$VALUE.id) OR (empty($VALUE.id) AND $DATA.PARAM.strategy==-3))} selected{/if}>{if !empty($company) AND $VALUE.id==0}Не обновлять ставки{else}{$VALUE.name}{/if}</option>{/if}
+										{/foreach}
+									</select>
+								</div>	
+								{if !empty($DATA.PARAM.where) AND $DATA.PARAM.where==3}<div class="col-md-3">
+									<select name="place" class="form-control" data-toggle="tooltip" title="Искать по позиции фразы">
+										<option value="0"{if empty($DATA.PARAM.place)} selected{/if}>Все позиции</option>
+										<option class="color_red" value="-1"{if $DATA.PARAM.place==-1} selected{/if}>Не видно или 2 страница &empty;</option>
+										<option class="color_yellow" value="1"{if $DATA.PARAM.place==1} selected{/if}>1 место спец. &uarr;</option>
+										<option class="color_yellow" value="2"{if $DATA.PARAM.place==2} selected{/if}>2 место спец. &uarr;</option>
+										<option class="color_yellow" value="3"{if $DATA.PARAM.place==3} selected{/if}>3 место спец. &uarr;</option>
+										<option class="color_yellow" value="4"{if $DATA.PARAM.place==4} selected{/if}>4 место спец. &uarr;</option>
+										<option class="color_green" value="5"{if $DATA.PARAM.place==5} selected{/if}>5 место гарантии &darr;</option>
+										<option class="color_green" value="6"{if $DATA.PARAM.place==6} selected{/if}>6 место гарантии &darr;</option>
+										<option class="color_green" value="7"{if $DATA.PARAM.place==7} selected{/if}>7 место гарантии &darr;</option>
+										<option class="color_green" value="8"{if $DATA.PARAM.place==8} selected{/if}>8 место гарантии &darr;</option>
+
+									</select>
+								</div>{/if}
+								<div class="col-md-1">	
+									<button class="btn btn-default" type="submit">&#128269;</button>
+								</div>								
+							</div>
+							{if !empty($DATA.PARAM.where) AND $DATA.PARAM.where==3}<div class="row" style="margin-top: 2px;">							
+								<div class="col-md-3">
+									<select name="pricelist" class="form-control" data-toggle="tooltip" title="Поиск фраз в диапазоне цен за выбранное место">
+										<option value="0"{if empty($DATA.PARAM.pricelist)} selected{/if}>Все места</option>
+										<option class="color_yellow" value="1"{if $DATA.PARAM.pricelist==1} selected{/if}>1 место спец. &uarr;</option>
+										<option class="color_yellow" value="2"{if $DATA.PARAM.pricelist==2} selected{/if}>2 место спец. &uarr;</option>
+										<option class="color_yellow" value="3"{if $DATA.PARAM.pricelist==3} selected{/if}>3 место спец. &uarr;</option>
+										<option class="color_yellow" value="4"{if $DATA.PARAM.pricelist==4} selected{/if}>4 место спец. &uarr;</option>
+										<option class="color_green" value="5"{if $DATA.PARAM.pricelist==5} selected{/if}>5 место гарантии &darr;</option>
+										<option class="color_green" value="6"{if $DATA.PARAM.pricelist==6} selected{/if}>6 место гарантии &darr;</option>
+										<option class="color_green" value="7"{if $DATA.PARAM.pricelist==7} selected{/if}>7 место гарантии &darr;</option>
+										<option class="color_green" value="8"{if $DATA.PARAM.pricelist==8} selected{/if}>8 место гарантии &darr;</option>
+
+									</select>
+								</div>
+								<div class="col-md-1" title="Искать по списываемой цене">
+									<span data-toggle="tooltip" title="Отобрать по списываемой цене">Цена</span> <input type="checkbox" name="real" value="1"{if !empty($DATA.PARAM.real)} checked{/if} />
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="price1" value="{if !empty($DATA.PARAM.price1)}{$DATA.PARAM.price1}{/if}" data-toggle="tooltip" title="Ставка больше" placeholder=">">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="price2" value="{if !empty($DATA.PARAM.price1)}{$DATA.PARAM.price2}{/if}" data-toggle="tooltip" title="Ставка меньше" placeholder="<">
+								</div>
+								
+								<div class="col-md-1">	
+									<button class="btn btn-default" type="submit">&#128269;</button>
+								</div>
+							
+							</div>{/if}
+							</form>
+							
+							<hr>
+							<div class="row">
+								
+								<div class="col-md-3">
+									<select id="strategy_id" name="strategy" class="form-control" data-toggle="tooltip" title="Стратегия">
+										{foreach from=$DATA.STRATEGY.ELEMENT item=VALUE}
+											{if empty($company) OR (!empty($company) AND $VALUE.id!=-1)}<option value="{$VALUE.id}"{if $VALUE.id==0} selected{/if}>{if !empty($company) AND $VALUE.id==0}Не обновлять ставки{else}{$VALUE.name}{/if}</option>{/if}
+										{/foreach}
+									</select>
+								</div>							
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="strategy_percent" value="" data-toggle="tooltip" title="Наценка в процентах. С галочкой от разницы до 1 места" placeholder="+, %">
+								</div>
+								<div class="col-md-1">
+									% <input type="checkbox" id="strategy_type" value="1"> &#8597;
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="strategy_add" value="" data-toggle="tooltip" title="Наценка в валюте кампании" placeholder="&plusmn;, ед.">
+								</div>	
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="strategy_maximum" value="" data-toggle="tooltip" title="Максимальная ставка" placeholder="Макс.">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="strategy_fixed" value="" data-toggle="tooltip" title="Фиксированная ставка" placeholder="Фикс.">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="strategy_budget" value="" data-toggle="tooltip" title="Ограничение дневного бюджета" placeholder="&uarr;, ед.">
+								</div>								
+								<div class="col-md-3">	
+									<button class="btn btn-default" id="strategy_button" type="button">Установить &crarr;</button>
+								</div>
+							</div>
+							<div class="row" style="margin-top: 2px;">								
+								<div class="col-md-3">
+									&nbsp;РСЯ включить <input type="checkbox" id="context" value="1">
+								</div>							
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="context_percent" value="" data-toggle="tooltip" title="РСЯ: Максимальный охват в процентах, %" placeholder="&#8597;, %">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="context_maximum" value="" data-toggle="tooltip" title="РСЯ: Максимальная ставка" placeholder="Макс.">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="context_fixed" value="" data-toggle="tooltip" title="РСЯ: Ставка для РСЯ при отсутствии информации об охвате аудитории" placeholder="Фикс.">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" id="context_minimum" value="" data-toggle="tooltip" title="РСЯ: Минимальная ставка" placeholder="Мин.">
+								</div>
+								{if !empty($DATA.CONFIG.xml_user) AND !empty($DATA.CONFIG.xml_key)}
+								<div class="col-md-1">
+									XML <input type="checkbox" id="position" value="1">
+								</div>
+								{/if}							
+							</div>
+						</div>
+					

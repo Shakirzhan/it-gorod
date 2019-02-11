@@ -1,0 +1,128 @@
+.mobile-menu--btn {
+	position: fixed;
+	top: 15px;
+	right: 15px;
+	font-size: 2em;
+	z-index: 1001;
+	background: $mainColor;
+	@include br(3px);
+	text-align: center;
+	color: #fff;
+}
+.mobile-menu--btn span {
+	display: inline-block;
+}
+.mobile-menu--btn span:before {
+    content: "\f0c9";
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    width: 50px; 
+    font-family: 'fontAwesome';
+    @include td(0.3s);
+}
+.mobile-menu--btn_opened {
+	background-color: $accentColor;
+}
+.mobile-menu--btn_opened span:before{
+	content: "\f00d";
+}
+.mobile-menu--block {
+	background-color: #ffffff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-y: auto!important;
+	z-index: 999;
+	padding-top: 20px;
+}
+.mobile-menu {
+	padding-top: 20px;
+}
+.mobile-menu li {
+	position: relative;
+}
+.mobile-menu li a, .mobile-menu li a:hover {
+	display: block;
+	padding: 20px;
+	color: $defaultColor;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+	@include td(0.3s);
+}
+ .mobile-menu li a {
+ 	position: relative;
+ }
+.mobile-menu li.active > a {
+	font-weight: bold;
+}
+.mobile-menu li ul li {
+	font-size: 1em;
+}
+.m-dropdown-menu {
+	display: none;
+}
+.m-dropdown-menu a {
+	display: block;
+	margin-left: 40px;
+	@include td(0.3s);
+}
+.mobile-menu .active > a {
+    font-weight: bold;
+    box-shadow: 3px 0 0 transparentize($accentColor, 0.2) inset;
+}
+.m-dropdown-menu .m-dropdown-menu {
+	margin-left: 40px;
+}
+.show-m-dropdown-menu-btn, .show-m-dropdown-menu-btn:hover {
+	background: transparent;
+    border: 2px solid transparentize($mainColor, 0.5);;
+    @include br(3px);
+    color: $mainColor;
+    display: block;
+    font-size: 2em;
+    height: 40px;
+    line-height: 36px;
+    position: absolute;
+    right: 15px;
+    text-align: center;
+    top: 10px;
+    width: 40px;
+}
+.mobile-menu--item_opened .show-m-dropdown-menu-btn i {
+	transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+.mobile-menu--item_opened .m-dropdown-menu .show-m-dropdown-menu-btn i {
+	transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
+}
+.mobile-menu--item_opened .mobile-menu--item_opened .show-m-dropdown-menu-btn i {
+	transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+.mobile-menu .with-dropdown a {
+    padding-right: 60px;
+}
+
+
+.mobile-menu-contacts {
+	padding-left: 20px; 
+}
+.mobile-menu-contacts--phone {
+	display: inline-block;
+	padding: 5px 0;
+	font-size: 1.4em;
+}
+
+

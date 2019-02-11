@@ -1,0 +1,77 @@
+<!-- Your awesome content goes here -->
+				<div class="row">
+					
+					
+				{assign var="VALUE" value=$DATA.CRON[0]}
+				
+				<div class="box-info animated fadeInDown">
+				<h2><strong>{if !empty($DATA.PARAM.id)}Редактирование задания{else}Добавление задания{/if}</strong> </h2>
+					<form class="form-horizontal save" role="form" action="/direct/save/cron_save/">
+					  <input type="hidden" name="id" value="{$VALUE.id}" />
+					  
+					 <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Наименование</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="input-text" name="name" value="{$VALUE.name}" placeholder="Наименование процесса">
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Процесс</label>
+						<div class="col-sm-10">
+							<select name="value" class="form-control">
+								<option value="direct/model/auction/set">Обновление ставок</option>
+								<option value="direct/model/sinchronize/set"{if $VALUE.value=='direct/model/sinchronize/set'} selected{/if}>Синхронизация данных</option>
+								<option value="direct/model/statistic/set"{if $VALUE.value=='direct/model/statistic/set'} selected{/if}>Статистика</option>
+							</select>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Аккаунт Яндекс.Директ</label>
+						<div class="col-sm-10">
+							<select name="account" class="form-control cron_account">
+								<option value="0">Все</option>
+								{foreach from=$DATA.ACCOUNT.ELEMENT item=SELECT}
+									<option value="{$SELECT.id}"{if $SELECT.id==$DATA.PARAM.account} selected{/if}>{$SELECT.login}{if !empty($SELECT.name)} - {$SELECT.name}{/if}</option>
+								{/foreach}
+							</select>
+						</div>
+					  </div>
+
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Субклиент Яндекс.Директ</label>
+						<div class="col-sm-10">
+							<select name="user" class="form-control cron_user">
+								<option value="0">Все</option>
+								{foreach from=$DATA.USER.ELEMENT item=SELECT}
+									<option value="{$SELECT.id}"{if $SELECT.id==$DATA.PARAM.user} selected{/if}>{$SELECT.login}{if !empty($SELECT.name)} - {$SELECT.name}{/if}</option>
+								{/foreach}
+							</select>
+						</div>
+					  </div>
+					  
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Кампания Яндекс.Директ</label>
+						<div class="col-sm-10">
+							<select name="company[]" class="form-control cron_company" multiple="multiple" size="10">
+								<option value="0">Все</option>
+								{foreach from=$DATA.COMPANY.ELEMENT item=SELECT}
+									<option value="{$SELECT.id}"{if !empty($DATA.PARAM.company) AND in_array($SELECT.id, $DATA.PARAM.company)} selected{/if}>{$SELECT.id}{if !empty($SELECT.name)} - {$SELECT.name}{/if}</option>
+								{/foreach}
+							</select>
+						</div>
+					  </div>					  
+					  
+					 <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">Максимальное время выполнения, сек.</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="Время с момента запуска скрипта, по истечению которого процесс принудительно перезапускается (в секундах). Должно быть больше времени работы процесса. 1 минута = 60 секунд, 1 час = 3600 секунд, 0 - без ограничений.">
+						  <input type="text" class="form-control" id="input-text" name="time_limit" value="{$VALUE.time_limit}" placeholder="1 минута = 60 секунд, 1 час = 3600 секунд, 0 - без ограничений">
+						</div>
+					  </div>
+					  
+					    {if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}{else}<center><button type="submit" class="btn btn-default">{if $language=='en'}Save{else}Сохранить{/if}</button>{if !empty($VALUE.id)} <button type="button" class="btn btn-default" onclick="location.href='{$FRAMEWORK.http_dir}/direct/save/cron_delete/param/id/{$VALUE.id}/'">{if $language=='en'}Delete{else}Удалить{/if}</button>{/if}</center>{/if}
+					</form>
+					
+				</div>
+				<!-- End of your awesome content -->

@@ -1,0 +1,4 @@
+<?
+$MESS["SVA_TINYPNG_MAIN_TITLE"] = "TinyPNG";
+$MESS["SVA_TINYPNG_FILES"] = "?????";
+?>

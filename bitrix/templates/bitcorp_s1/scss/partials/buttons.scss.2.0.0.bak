@@ -1,0 +1,104 @@
+/*buttons*/
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.btn, button, input[type="button"], input[type="submit"] {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    @include br(2px); 
+    @include td(0.3s)
+}
+.btn-full-width {
+	width: 100%;
+}
+.btn:focus, button:focus, input[type="button"]:focus, , input[type="submit"]:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn, button.disabled, button[disabled], fieldset[disabled] button  {
+    cursor: not-allowed;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+a.btn.disabled, fieldset[disabled] a.btn {
+    pointer-events: none;
+}
+.btn, input[type="button"], input[type="submit"], input[type="submit"],  button {
+    color: $accentColor;
+    background-color: transparent;
+    border-color: $accentColor;
+}
+.btn:focus, input[type="button"]:focus, input[type="submit"]:focus, button:focus {
+    color: mix(black, $accentColor, 10%);
+    background-color: transparent;
+    border-color: mix(black, $accentColor, 10%); 
+}
+.btn:hover, input[type="button"]:hover, input[type="submit"]:hover, button:hover {
+    color: mix(black, $accentColor, 10%);
+    background-color: transparent;
+    border-color: mix(black, $accentColor, 10%); 
+}
+.btn:active, input[type="button"]:active, input[type="submit"]:active, button:active {
+    color:  mix(black, $accentColor, 20%);
+    background-color: transparent;
+    border-color:  mix(black, $accentColor, 20%);
+}
+.btn-default {
+    color: #ffffff;
+    background: $mainColor;
+    border-color: $mainColor;
+}
+.btn-default:hover, .btn-default:focus {
+    color: #ffffff;
+    border-color: mix(black, $mainColor, 10%);
+    background: mix(black, $mainColor, 10%);
+}
+.btn-default:active {
+    color: #ffffff;
+    border-color: mix(black, $mainColor, 20%);
+    background: mix(black, $mainColor, 20%);
+}
+.btn-primary {
+    color: #ffffff;
+   	background: $accentColor;
+    border-color: $accentColor;
+}
+.btn-primary:hover, .btn-primary:focus {
+   	color: #ffffff;
+   	border-color: mix(black, $accentColor, 10%);
+   	background: mix(black, $accentColor, 10%);
+}
+.btn-primary:active {
+    color: #ffffff;
+   	border-color: mix(black, $accentColor, 20%);
+   	background: mix(black, $accentColor, 20%);
+}
+.btn-xl {
+	font-size: 1.2em;
+	font-weight: 600; 
+}
+.btn-xs {
+    padding: 8px 20px;
+}
+/*buttons end*/

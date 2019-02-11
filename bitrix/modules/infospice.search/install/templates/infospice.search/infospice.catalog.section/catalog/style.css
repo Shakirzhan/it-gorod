@@ -1,0 +1,157 @@
+#search-module .result-items{
+	font-size:12px;
+	line-height:18px;
+	overflow:hidden;
+	margin:0 0 -13px;
+}
+
+#search-module .result-items-boxes{
+	margin:0;
+	padding:11px 0 0;
+}
+#search-module .result-items .meta{
+	overflow:hidden;
+	font-size:11px;
+	font-style:italic;
+	color:#595959;
+}
+#search-module .result-items .meta a{color:#595959;}
+#search-module .result-items .meta .date{float:left;}
+#search-module .result-items .meta .breadcrumbs{
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:left;
+}
+#search-module .result-items .meta .breadcrumbs li{
+	float:left;
+	background: url(images/divider2.gif) no-repeat 0 50%;
+	padding:0 5px 0 14px;
+}
+#search-module .result-items .meta .breadcrumbs li:first-child{background-image:none;}
+#search-module .result-items .item{
+	background: url(images/bg-item-divider1.png) repeat-x;
+	padding:57px 3px 44px;
+	margin:-57px 0 0;
+	overflow:hidden;
+}
+#search-module .result-items-boxes .item{
+	border:1px solid #f0f0f0;
+	width:211px;
+	min-height:214px;
+	display:inline-block;
+	vertical-align:top;
+	padding:0 7px 22px;
+	margin:0 -5px -1px 0;
+	background-position:0 100%;
+}
+* +html #search-module .result-items-boxes .item{
+	margin:0 -1px -1px 0;
+	min-height:217px;
+	display:inline;
+}
+#search-module .result-items-boxes2{
+	width:100%;
+	position:relative;
+	margin:0 0 32px;
+	padding:0 0 1px;
+}
+#search-module .result-items-boxes2 .item{
+	width:207px;
+	border:1px solid #e2e2e2;
+	padding:25px 25px 25px 25px;
+	margin:0 -5px -1px 0;
+	display:inline-block;
+	vertical-align:top;
+	background: url(images/bg-box2.png) no-repeat 0 100%;
+	min-height:280px;
+}
+* +html #search-module .result-items-boxes2 .item{
+	display:inline;
+	margin:0 -1px -1px 0;
+}
+#search-module .result-items2 .description{overflow:hidden;}
+#search-module .result-items-boxes .description{}
+#search-module .result-items-boxes2 .description{line-height:19px;}
+#search-module .result-items p{margin:0 0 13px;}
+#search-module .result-items-boxes2 .description p{margin:0 0 10px;}
+#search-module .result-items a{color:#008dce;}
+#search-module .result-items .ruble{text-decoration:line-through;}
+#search-module .result-items .image{margin:0 0 6px;}
+#search-module .result-items2 .image{
+	float:left;
+	margin:0 15px 6px 0;
+}
+#search-module .result-items .image img{display:block;}
+#search-module .result-items-boxes .image{margin:0 0 -12px;}
+#search-module .result-items-boxes .image img{margin:12px auto 0;}
+#search-module .result-items-boxes2 .image{
+	margin:0 0 1px; 
+	height: 160px;
+}
+#search-module .result-items-boxes2 .image img{
+	display:block;
+	margin:4px auto 9px;
+}
+#search-module .result-items-boxes2 .properties{
+	display:block;
+	margin:4px auto 9px;
+}
+#search-module .result-items .price{
+	width: 195px;
+	position: relative;
+}
+#search-module .result-items .price .label{
+	color:#000;
+	overflow:hidden;
+	font-size:21px;
+	line-height:28px;
+	display:block;
+}
+#search-module .result-items-boxes2 .price .regular-price{
+	font-size:16px;
+	line-height:normal;
+}
+#search-module .result-items-boxes2 .price .discount-price{
+	font-size:16px;
+	font-weight: bold;
+	color: #E83434;
+}
+#search-module .result-items-boxes2 .price .old-price{
+	text-decoration: line-through;
+	color: #000;
+}
+#search-module .result-items .price .label span{
+	background:#fffbd6 url(images/bg-price-label.gif) no-repeat;
+	height:28px;
+	float:left;
+	padding:0 4px;
+}
+#search-module .result-items .price .btn_buy {
+	position: absolute;
+	right: -10px;
+	display:block; 
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+	height:30px; 
+	border-radius:3px; 
+	line-height:30px; 
+	text-decoration:none; 
+	color:#FFF !important;
+}
+#search-module .result-items .price .btn_buy.black {
+	background:url('images/btn_buy_black.png') top repeat-x; 
+}
+#search-module .result-items .price .btn_buy.red {
+	background:url('images/btn_buy_red.png') top repeat-x; 
+}
+#search-module .result-items .price .btn_buy.green {
+	background:url('images/btn_buy_green.png') top repeat-x; 
+}
+#search-module .result-items .price .btn_buy.blue {
+	background:url('images/btn_buy_blue.png') top repeat-x; 
+}
+#search-module .result-items .price .btn_buy.incart {
+	background:url('images/btn_buy_black.png') top repeat-x; 
+}

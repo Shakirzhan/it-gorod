@@ -1,0 +1,4 @@
+<?
+$MESS["INFOSPICE_SEARCH_OPUBLIKOVANO"] = "Опубликовано";
+$MESS["INFOSPICE_SEARCH_SOOBSENIY"] = "Сообщений";
+?>

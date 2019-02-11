@@ -1,0 +1,45 @@
+{if (empty($USER))}
+	<!-- Begin page -->
+	<div class="container">
+		<div class="full-content-center animated fadeInDownBig">
+			<a href=""><img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/logo-login.png" class="logo-login img-circle" alt="Logo"></a>
+			<div class="login-wrap">
+				<div class="box-info">
+				<h2 class="text-center"><strong>{if $language=='en'}Login{else}Авторизация{/if}</strong> {if $language=='en'}form{else}{/if}</h2>
+				
+					<form role="form" class="login" action="/user/controller/authorize/">
+						<div class="form-group login-input">
+						<i class="fa fa-sign-in overlay"></i>
+						<input type="text" name="login" value="{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}admin{/if}" class="form-control text-input" placeholder="{if $language=='en'}Username{else}Логин{/if}">
+						</div>
+						<div class="form-group login-input">
+						<i class="fa fa-key overlay"></i>
+						<input type="password" name="password" value="{if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}admin{/if}" class="form-control text-input" placeholder="{if $language=='en'}Password{else}Пароль{/if}">
+						</div>
+						{*<div class="checkbox">
+						<label>
+							<input type="checkbox" name="auto" value="1"> {if $language=='en'}Remember me{else}Запомнить{/if}
+						</label>
+						</div>*}
+						
+						<div class="row">
+							<div class="col-sm-6">
+							<button type="submit" class="btn btn-success btn-block"><i class="fa fa-unlock"></i> {if $language=='en'}Login{else}Войти{/if}</button>
+							</div>
+							
+						</div>
+					</form>
+					
+				</div>
+				<p class="text-center"><a href="{$FRAMEWORK.http_dir}/user/controller/remember/"><i class="fa fa-lock"></i> {if $language=='en'}Forgot password?{else}Забыли пароль?{/if}</a></p>
+				<br><br><br><br><br><p class="text-center"><a href="http://direct-automate.ru" target="_blank" title="Директ-автомат.рф">&copy; {if $language=='en'}Direct-automate.ru{else}«Директ-автомат.рф»{/if}</a></p>
+			</div>
+			
+		</div>
+	</div>
+	<!-- End of page -->
+	{else}
+				<center>
+                  <p>{if $language=='en'}Logged{else}Вы авторизованы!{/if}</p>
+				 </center>
+	{/if}

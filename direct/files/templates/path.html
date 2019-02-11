@@ -1,0 +1,17 @@
+				<!-- Page header -->
+				<div class="page-heading animated fadeInDownBig">
+					<h1><a href="{$FRAMEWORK.http_dir}/">Яндекс.Директ</a> <small> автомат 
+					{if !empty($DATA.DIRECT) AND $FRAMEWORK.controller=="direct/index/phrase"}
+						/ {if !empty($DATA.DIRECT.USER)}<a href="{$FRAMEWORK.http_dir}/">Ставки</a> / {foreach from=$DATA.DIRECT.ACCOUNT item=VALUE}<a href="{$FRAMEWORK.http_dir}/direct/index/company/param/where/1/user/{$VALUE.id}/#{$DATA.DIRECT.COMPANY.id}">{$VALUE.login}</a> / {/foreach}{else}<a href="{$FRAMEWORK.http_dir}/#{$DATA.DIRECT.COMPANY.id}">Компании</a> / {/if}<a href="{$FRAMEWORK.http_dir}/direct/index/group/param/where/2/user/{$DATA.DIRECT.USER.id}/company/{$DATA.DIRECT.COMPANY.id}/#{$DATA.DIRECT.GROUP.id}">{$DATA.DIRECT.COMPANY.name}</a> / {$DATA.DIRECT.GROUP.name}
+					{elseif !empty($DATA.DIRECT) AND $FRAMEWORK.controller=="direct/index/group"}
+						/ {if !empty($DATA.DIRECT.USER)}<a href="{$FRAMEWORK.http_dir}/">Ставки</a> / {foreach from=$DATA.DIRECT.ACCOUNT item=VALUE}<a href="{$FRAMEWORK.http_dir}/direct/index/company/param/where/1/user/{$VALUE.id}/#{$DATA.DIRECT.COMPANY.id}">{$VALUE.login}</a> / {/foreach}{else}<a href="{$FRAMEWORK.http_dir}/#{$DATA.DIRECT.COMPANY.id}">Компании</a> / {/if}{$DATA.DIRECT.COMPANY.name}
+					{else}
+						{if !empty($DATA.DIRECT) AND !empty($DATA.PARAM.user) AND $FRAMEWORK.controller=="direct/index/company"}
+							/ <a href="{$FRAMEWORK.http_dir}/">Ставки</a>{foreach from=$DATA.DIRECT.ACCOUNT item=VALUE name=element} / {if !$smarty.foreach.element.last}<a href="{$FRAMEWORK.http_dir}/direct/index/company/where/1/param/user/{$VALUE.id}/">{/if}{$VALUE.login}</a>{/foreach}
+						{else}
+							
+						{/if}
+					{/if}
+					</small></h1>
+				</div>
+				<!-- End page header -->

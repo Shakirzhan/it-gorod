@@ -1,0 +1,7 @@
+<?
+if($INCLUDE_FROM_CACHE!='Y')return false;
+$datecreate = '001549866312';
+$dateexpire = '001549869912';
+$ser_content = 'a:2:{s:7:"CONTENT";s:0:"";s:4:"VARS";a:1:{s:3:"pos";a:3:{s:8:"sections";s:1138:"iblock_redirect,menu_util,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F18,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F16,menu_iblock_%2Fmarsd_bitcorp_s1%2F7,menu_iblock_%2Fmarsd_bitcorp_s1%2F13,menu_module_settings,menu_composite,urlrewrite,diag,menu_perfmon,iblock_admin,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F20,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F19,seo_search_engine,menu_iblock_%2Fmarsd_bitcorp_s1%2F10,backup,seo_search_adv,menu_fileman,menu_site,menu_update_section_5,menu_update_section_4,menu_update_section_3,menu_update_section_2,menu_update_section_1,menu_update_section_0,menu_iblock,menu_system,menu_iblock_/marsd_bitcorp_s1,menu_seo,menu_perfmon_index_list,menu_iblock_/marsd_bitcorp_requests_s1,menu_iblock_%2Fmarsd_bitcorp_s1%2F14,menu_iblock_%2Fmarsd_bitcorp_s1%2F4,menu_iblock_%2Fmarsd_bitcorp_s1%2F2,menu_iblock_%2Fmarsd_bitcorp_s1%2F12,menu_iblock_%2Fmarsd_bitcorp_s1%2F3,menu_iblock_%2Fmarsd_bitcorp_s1%2F5,menu_iblock_%2Fmarsd_bitcorp_s1%2F8,menu_iblock_%2Fmarsd_bitcorp_s1%2F9,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F17,menu_templates,menu_iblock_%2Fmarsd_bitcorp_requests_s1%2F21,menu_smile,menu_rating";s:5:"width";s:3:"436";s:3:"ver";s:2:"on";}}}';
+return true;
+?>

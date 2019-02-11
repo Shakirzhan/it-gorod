@@ -1,0 +1,18 @@
+
+.fluid-label {
+  position: relative;
+  padding: 15px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.fluid-label input, .fluid-label textarea {
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.fluid-label label {
+  position: absolute;
+  top: 5px;
+}

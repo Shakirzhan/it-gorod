@@ -1,0 +1,68 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>Стратегии</strong></h2>
+						
+						<div class="data-table-toolbar">
+							<div class="row">
+								<div class="col-md-4">
+									{*<form role="form">
+									<input type="text" class="form-control" placeholder="Search...">
+									</form>*}
+								</div>
+								<div class="col-md-8">
+									<div class="toolbar-btn-action">
+										<a class="btn btn-success" href="{$FRAMEWORK.http_dir}/direct/strategy/get/param/id/0/"><i class="fa fa-plus-circle"></i> Добавить стратегию</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					<div class="table-responsive"><form class="save" action="">
+						<table data-sortable class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>ID</th>
+									{*<th style="width: 30px" data-sortable="false"><input type="checkbox" class="rows-check"></th>*}
+									<th>Наименование</th>
+									<th data-sortable="false">Редактировать</th>									
+								</tr>
+							</thead>
+							
+							<tbody>
+							{foreach from=$DATA.STRATEGY.ELEMENT item=ELEMENT}
+								<tr>
+									<td>{$ELEMENT.id}</td>
+									{*<td><input type="checkbox" class="rows-check"></td>*}
+									<td data-toggle="tooltip" title="{if $ELEMENT.status!=2}Редактировать{else}Предустановленная стратегия{/if}"><strong>{if $ELEMENT.status!=2}<a href="{$FRAMEWORK.http_dir}/direct/strategy/get/param/id/{$ELEMENT.id}/">{/if}{$ELEMENT.name}</a></strong></td>
+									<td>
+										<div class="btn-group btn-group-xs">
+											{if $ELEMENT.status!=2}<a data-toggle="tooltip" title="Редактировать" href="{$FRAMEWORK.http_dir}/direct/strategy/get/param/id/{$ELEMENT.id}/" class="btn btn-default"><i class="fa fa-edit"></i></a>{/if}
+										</div>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+						</form>
+					</div>
+	
+					{*if !empty($DATA.USER.PAGE.pages) AND $DATA.USER.PAGE.pages>1}	
+					<div class="data-table-toolbar">
+						<ul class="pagination">
+						  <li{if $DATA.USER.PAGE.page==$DATA.USER.PAGE.first} class="disabled"{/if}><a href="/user/user/get/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.USER.PAGE.first}/">&laquo;</a></li>
+						  {section name=page start=0 loop=$DATA.USER.PAGE.pages}
+						  <li{if $DATA.USER.PAGE.current==$smarty.section.page.iteration} class="active"{/if}><a href="/user/user/get/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$smarty.section.page.index}/">{$smarty.section.page.iteration}</a></li>
+						  {/section}
+						  <li{if $DATA.USER.PAGE.page==$DATA.USER.PAGE.last} class="disabled"{/if}><a href="/user/user/get/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.USER.PAGE.last}/">&raquo;</a></li>
+						</ul>
+					</div>
+					{/if*}
+					
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

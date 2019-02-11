@@ -1,0 +1,26 @@
+DirectoryIndex index.php
+
+<ifModule mod_php5.c>
+php_value max_input_vars 100000
+php_value post_max_size 64M
+</ifModule>
+<ifModule mod_php.c>
+php_value max_input_vars 100000
+php_value post_max_size 64M
+</ifModule>
+
+RewriteEngine	on
+
+RewriteBase	/
+
+RewriteRule	^index\.php$	-	[L]
+
+RewriteRule	^cron\.php$	-	[L]
+
+RewriteRule	^robots\.txt$	-	[L]
+
+RewriteRule	^.htaccess$	-	[F]
+
+RewriteRule	^files/	-	[L]
+
+RewriteRule	^(.*)$	index.php

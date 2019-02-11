@@ -1,0 +1,1 @@
+<?$MESS["SVA_TINY_PNG_MODULE_IS_INSTALED"] = "Модуль TinyPNG установлен";

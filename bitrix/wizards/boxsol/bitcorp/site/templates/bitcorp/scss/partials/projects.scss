@@ -1,0 +1,79 @@
+.main-projects {
+    padding: 50px 0;
+}
+.projects {
+	margin-left: -5px;
+}
+.project {
+	width: 25%;
+	height: 320px;;
+	position: relative;
+	float: left;
+	box-sizing: border-box;
+}
+.project_w-50 {
+	width: 50%;
+}
+.project_w-33 {
+	width: 33.3333%;
+}
+.project--inner {
+	padding: 0 0 5px 5px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 5px;
+	bottom: 5px;
+	background-color: $defaultColor;
+	background-size: cover;
+	background-position: center;
+}
+.project a {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.project--name {
+	width: 100%;
+}
+.project a .project--name span {
+	border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+.project a:hover .project--name span {
+	border-bottom: 1px solid rgba(255,255,255,0.8);
+}
+.project--name {
+	position: absolute;
+	bottom: 0;
+	padding: 20px;
+	color: #ffffff;
+	left: 0;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
+	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#000000',GradientType=0 );
+}
+.project--name span {
+	font-size: 1.1em;
+    font-weight: 700;
+    line-height: 1.3em;
+}
+.project--descr {
+	margin-top: 10px;
+	opacity: 0.5;
+	@include td(0.3s);
+	height: 0;
+	overflow: hidden;
+}
+.project:hover .project--descr {
+	opacity: 1;
+	@include td(0.3s);
+	height: auto;
+	overflow: auto;
+}
+.project:hover .project--name {
+	background: transparentize($accentColor, 0.1);
+}

@@ -1,0 +1,9 @@
+{if !empty($DATA.DIRECT.USER)}<table>
+						<tr{if !empty($DATA.DIRECT.ACCOUNT[0]) AND $DATA.DIRECT.ACCOUNT[0].status!=1} class="color_red" title="Выключен"{/if}>
+							<td><strong>Клиент:</strong> {$DATA.DIRECT.USER.name}</td>
+							{if !empty($DATA.DIRECT.MANAGER)}<td><strong>Менеджер:</strong> {$DATA.DIRECT.MANAGER.name} ({$DATA.DIRECT.MANAGER.login})</td>{/if}
+							<td><strong>Логин:</strong> {$DATA.DIRECT.USER.login}</td>
+							<td><strong>Телефон:</strong> {$DATA.DIRECT.USER.phone}<td>
+							<td><strong>Email:</strong> <a href="mailto: {$DATA.DIRECT.USER.email}">{$DATA.DIRECT.USER.email}</a></td>
+						</tr>
+					</table>{/if}

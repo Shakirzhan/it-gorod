@@ -1,0 +1,27 @@
+<div class="table-responsiver">
+	<table>
+		<thead>
+			<tr>
+				<th colspan="2">Заголовок таблицы</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					Поле 1
+				</td>
+				<td>
+					Текст 1
+				</td>				
+			</tr>
+			<tr>
+				<td>
+					Поле 2
+				</td>
+				<td>
+					Текст 2
+				</td>				
+			</tr>						
+		</tbody>
+	</table>
+</div>

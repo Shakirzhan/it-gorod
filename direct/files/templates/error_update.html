@@ -1,0 +1,65 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>Обновление программы</strong> (<a href="http://direct-automate.ru/directautomate/index/board/30399114/" target="_blank">скачать</a>)</h2>
+					<div><table><tr><td>Обновление устанавливается на любую версию 1.4.x путем копирования новых файлов в папку программы с заменой через FTP или Файловый менеджер. Старые файлы удалять нельзя, только перезаписывать на новые. После заливки файлов необходимо зайти в программу под вашим логином и паролем для автообновления базы данных.</td></tr></table><br></div>
+					
+					{*		
+					<div class="table-responsive"><form class="save" action="">
+						<table data-sortable class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>Таблица</th>
+									<th>Размер</th>
+									<th>Лишние данные</th>
+									<th>Кол-во записей</th>
+									<th>Время обновления</th>									
+									<th>Статус</th>	
+									<th data-sortable="false">Операции</th>									
+								</tr>
+							</thead>
+							
+							<tbody>
+							{if !empty($DATA.TABLE.ELEMENT)}
+								{foreach from=$DATA.TABLE.ELEMENT item=ELEMENT}
+									<tr>
+										<td>{$ELEMENT.name}</td>
+										<td>{if !empty($ELEMENT.mb)}{$ELEMENT.mb} Мб{else}{$ELEMENT.kb} Кб{/if}</td>
+										<td>{$ELEMENT.optimize}</td>
+										<td>{$ELEMENT.count}</td>
+										<td>{$ELEMENT.time|date_format:'%H:%M:%S %d.%m.%Y'}</td>
+										<td>{if $ELEMENT.status}Работает{else}<font class="color_red">Повреждена</font>{/if}</td>
+										<td>
+											<div class="btn-group btn-group-xs">
+												<a href="{$FRAMEWORK.http_dir}/direct/error/table/param/repair/1/table/{$ELEMENT.name}/" title="Починить" class="btn btn-default"><i class="fa fa-wrench"></i></a>
+												<a href="{$FRAMEWORK.http_dir}/direct/error/table/param/optimize/1/table/{$ELEMENT.name}/" title="Оптимизировать" class="btn btn-default"><i class="fa fa-level-down"></i></a>
+												{if in_array($ELEMENT.name, $DATA.TRUNCATE)}<a href="{$FRAMEWORK.http_dir}/direct/error/table/param/truncate/1/table/{$ELEMENT.name}/" title="Очистить" class="btn btn-default"><i class="fa fa-minus-circle"></i></a>{/if}
+											</div>
+										</td>
+									</tr>
+								{/foreach}
+							{/if}
+							</tbody>
+						</table>
+						</form>
+					</div>
+	
+					{if !empty($DATA.ERROR.PAGE.pages) AND $DATA.ERROR.PAGE.pages>1}	
+					<div class="data-table-toolbar">
+						<ul class="pagination">
+						  <li{if $DATA.ERROR.PAGE.page==$DATA.ERROR.PAGE.first} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/error/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.ERROR.PAGE.first}/">&laquo;</a></li>
+						  {section name=page start=0 loop=$DATA.ERROR.PAGE.pages}
+						  <li{if $DATA.ERROR.PAGE.current==$smarty.section.page.iteration} class="active"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/error/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$smarty.section.page.index}/">{$smarty.section.page.iteration}</a></li>
+						  {/section}
+						  <li{if $DATA.ERROR.PAGE.page==$DATA.ERROR.PAGE.last} class="disabled"{/if}><a href="{$FRAMEWORK.http_dir}/direct/index/error/param/{if !empty($DATA.PARAM.group)}group/{$DATA.PARAM.group}/{/if}page/{$DATA.ERROR.PAGE.last}/">&raquo;</a></li>
+						</ul>
+					</div>
+					{/if}
+					*}
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

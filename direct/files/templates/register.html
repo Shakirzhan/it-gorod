@@ -1,0 +1,92 @@
+{if (empty($USER))}
+<h2>Регистрация</h2>
+<form id="contact-form1" class="register_form"><input type="hidden" name="action" value="register"><input type="hidden" id="session" name="{$session_name}" value="{$session}">
+          <div class="wrapper">
+            <div class="grid_12 rel">
+              <article class="grid_6 alpha">
+                  <div class="success" style="display: block;">
+                  </div>
+                  <fieldset>
+                    <label class="lastname">
+                      <em>Фамилия:</em>
+                      <input type="text" name="lastname" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="name">
+                      <em>Имя:</em>
+                      <input type="text" name="name" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="notRequired">
+                      <em>Отчество:</em>
+                      <input type="text" name="middlename" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле не обязательно!</span>
+                    </label>	
+					<label class="email">
+                      <em>Email:</em>
+                      <input type="text" name="email" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="notRequired">
+                      <em>Skype:</em>
+                      <input type="text" name="skype" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">Это поле не обязательно!</span>
+                    </label>
+					<label class="phone">
+                      <em>Телефон (в международном формате +7XXX-XXX-XX-XX):</em>
+                      <input type="text" name="phone" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="country">
+                      <em>Страна:</em>
+                      <input type="text" name="country" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="city">
+                      <em>Город:</em>
+                      <input type="text" name="city" value="">
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="notRequired">
+                      <em>Номер пригласившего Вас участника:</em>
+                      <input type="text" name="parent" value="{if !empty($DATA.parent)}{$DATA.parent}{/if}"{if $DATA.parent} readonly{/if}>
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+                    <label class="password">
+                      <em>Пароль:</em>
+                      <input type="password" name="password" value="">
+                        <span class="error" style="display: none;">* Слабый пароль.</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="password1">
+                      <em>Пароль еще раз:</em>
+                      <input type="password" name="password1" value="">
+                        <span class="error" style="display: none;">* Пароли не совпадают.</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="captcha">
+                      <em>Введите текст на изображении:</em>
+                      <input type="text" name="captcha" value="">
+					  <img id="captcha" style="border: 1px solid #000; margin: 5px; cursor: pointer;" src="/user/controller/captcha/?{$session_name}={$session}&sid={$time}" alt="Нажмите чтобы изменить код" title="Нажмите чтобы изменить код" align="left" onclick="this.src = '/user/controller/captcha/?{$session_name}={$session}&sid=' + Math.random(); return false" />
+                        <span class="error" style="display: none;">* Ошибка</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>
+					<label class="dogovor notRequired">
+                      <em>Я ознакомлен и согласен с договором: <strong><a href="{$FRAMEWORK.http_dir}/article/controller/get/dogovor/" target="_blank" style="text-decoration: underline;">Договор</a></strong></em>
+                      <input type="checkbox" name="dogovor" value="1" style="width: 20px;">
+                        <span class="error" style="display: none;">* Требуется Ваше согласие.</span> <span class="empty" style="display: none;">*Это поле обязательно!</span>
+                    </label>					
+                  </fieldset>
+				<div class="buttons2">
+                    <a href="#" data-type="reset" class="button" onclick="return false">Очистить</a>
+                    <a href="#" data-type="submit" class="button" onclick="return false">Зарегистрироваться</a>
+                </div>
+              </article>
+              <div class="clear"></div>
+            </div>
+          </div>  
+        </form>
+	{else}
+				<center>
+                  <p>Вы авторизованы!<br>
+                      <strong><a href="{$FRAMEWORK.http_dir}/user/controller/index/" style="text-decoration: underline;">Личный кабинет</a></strong>
+                  </p>
+				 </center>
+	{/if}

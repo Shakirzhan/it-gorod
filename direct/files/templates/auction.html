@@ -1,0 +1,9 @@
+{if $DATA.PARAM.where==4}
+	{include file='retargeting.html'}
+{elseif $DATA.PARAM.where==3}
+	{include file='phrase.html'}
+{elseif $DATA.PARAM.where==2}
+	{include file='group.html'}
+{else}
+	{include file='company.html'}
+{/if}

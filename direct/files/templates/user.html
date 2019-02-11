@@ -1,0 +1,10 @@
+{assign var="language" value="ru"}
+{include file='header.html'}
+{if !empty($USER)}
+	{include file='first.html'}
+{elseif $FRAMEWORK.controller=="user/controller/remember"}
+	{include file='user_remember.html'}
+{else}
+	{include file='user_login.html'}
+{/if}
+{include file='footer.html'}

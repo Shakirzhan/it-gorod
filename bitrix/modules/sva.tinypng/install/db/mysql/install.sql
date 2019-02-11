@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS `b_sva_tinypng_files` (
+	`FILE_ID` int(11) NOT NULL,
+	`SIZE_BEFORE` int(11) NOT NULL,
+	`SIZE_AFTER` int(11) NOT NULL,
+	PRIMARY KEY (`FILE_ID`)
+);

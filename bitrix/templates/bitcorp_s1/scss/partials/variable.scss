@@ -1,0 +1,29 @@
+/*main color*/
+$mainColor: #0c4da2!default;
+$accentColor: #ed1c24!default;
+$siteTemplatePath: '../'!default;
+
+
+$defaultColor: #000000;
+$darkColor: #111111;
+$inverse: rgba(255,255,255,1);
+$calm: transparentize($defaultColor, 0.4);
+$bgcolor: lighten($defaultColor, 95%);
+$fsmid: 1.3em;
+$fssm: 0.95em;
+$fsxs: 0.85em;
+$marginmd: 30px;
+$marginsm: 15px;
+$blink: 1px solid transparentize($mainColor, 0.9);
+$blinkhover: 1px solid transparentize($defaultColor, 0.7);
+$transition: all 0.3s ease 0s;
+
+/*fonts*/
+$fontMain: 'Open Sans', sans-serif;
+$fontSecond: 'Raleway', sans-serif;
+/*/fonts*/
+
+$sliderHeight: 450px;
+
+
+

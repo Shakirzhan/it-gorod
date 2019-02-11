@@ -1,0 +1,48 @@
+				<!-- Your awesome content goes here -->
+				<div class="row">
+					
+					
+				
+				
+				<div class="box-info animated fadeInDown">
+				<h2><strong>Настройки</strong> </h2>
+					
+					<form class="form-horizontal save" role="form" action="/direct/save/config/">
+					  <div class="form-group" data-toggle="tooltip" title="Пример автовычисленного задания для планировщика задач crontab в панели управления хостингом">
+						<label for="input-text" class="col-sm-2 control-label">Планировщик задач</label>
+						<div class="col-sm-10">
+						  {$DATA.CONFIG.cron} > /dev/null 2>&1
+						</div>
+					  </div>
+					  {foreach from=$DATA.CONFIG.ELEMENT item=VALUE}{if empty($VALUE.type)}
+					  <div class="form-group">
+						<label for="input-text" class="col-sm-2 control-label">{$VALUE.name}</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="{$VALUE.description}">
+						  <input type="{if $VALUE.key=='password'}password{else}text{/if}" class="form-control" id="input-text" name="{$VALUE.key}" value="{$VALUE.value}" placeholder="{$VALUE.name}"{if $VALUE.status==2} disabled{/if}>
+						</div>
+					  </div>
+					  {else}
+					  <div class="form-group">
+						<label class="col-sm-2 control-label">{$VALUE.name}</label>
+						<div class="col-sm-10" data-toggle="tooltip" title="{$VALUE.description}">
+							<div class="radio">
+							  <label>
+								<input type="radio" name="{$VALUE.key}" id="optionsRadios1" value="1"{if !empty($VALUE.value)} checked{/if}>
+								Включено
+							  </label>
+							</div>
+							<div class="radio">
+							  <label>
+								<input type="radio" name="{$VALUE.key}" id="optionsRadios2" value="0"{if empty($VALUE.value)} checked{/if}>
+								Выключено
+							  </label>
+							</div>
+						</div>
+					  </div>
+					  {/if}
+					  {/foreach}
+					    <center><button type="submit" class="btn btn-default">{if $language=='en'}Save{else}Сохранить{/if}</button></center>
+					</form>
+					
+				</div>
+				<!-- End of your awesome content -->

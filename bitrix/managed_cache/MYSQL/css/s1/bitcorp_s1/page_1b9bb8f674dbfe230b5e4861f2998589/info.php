@@ -1,0 +1,1 @@
+<? $filesInfo = array( 'FILES' => array("/bitrix/templates/bitcorp_s1/components//bitrix/system.pagenavigation/modern/style.css" => "1549483334659",)); ?>

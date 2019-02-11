@@ -1,0 +1,9 @@
+.modern-page-navigation {
+	text-align: center;
+}
+div.modern-page-navigation a,span.modern-page-current,span.modern-page-dots {
+	border-left-width:0;
+}
+div.modern-page-navigation a.modern-page-previous {
+	border-right-width: 0;
+}

@@ -1,0 +1,68 @@
+.slider--item {
+	width: 100%;
+	height: $sliderHeight;
+	display: block;
+	background-position: center;
+    background-size: cover;
+}
+
+.slider--text_inverse {
+	color: white;
+}
+.slider--item > .container {
+    bottom: 0;
+    height: 100%;
+    position: relative;
+    top: 0;
+}
+.slider--item > .container > .row {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 15px;
+	right: 15px;
+}
+.slider--item > .container > .row [class*="col-"] {
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.black-menu + .slider .slider--item > .container > .row [class*="col-"] {
+    top: 55%;
+}
+.black-menu + .slider .slider--item {
+	height: $sliderHeight + 58px;
+}
+.slider--text {
+	padding-right: 60px;
+	z-index: 107;
+	position: relative;
+}
+.col-md-offset-2 .slider--text {
+	padding-right: 0;
+}
+.slider--title, .slider--title h1 {
+	font-size: 3em;
+	font-weight: 600;
+	line-height: 1.2em;
+	font-family: $fontSecond;
+}
+.slider--title h1 {
+	font-size: inherit;
+}
+.slider--descr {
+    font-size: 1.2em;
+    line-height: 1.4em;
+    margin-top: 40px;
+}
+.slider--buttons {
+	margin-top: 40px;
+}
+.md-wrapper {
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+.owl-carousel .owl-item img {
+	width: auto;
+}

@@ -1,0 +1,1 @@
+drop table if exists b_sva_tinypng_files;

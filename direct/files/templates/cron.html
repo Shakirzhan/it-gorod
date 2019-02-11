@@ -1,0 +1,84 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>Планировщик заданий</strong></h2>
+						
+						<div class="data-table-toolbar">
+							<div class="row">
+								<div class="col-md-4">
+									{*<form role="form">
+									<input type="text" class="form-control" placeholder="Search...">
+									</form>*}
+								</div>
+								<div class="col-md-8">
+									<div class="toolbar-btn-action">
+										<a class="btn btn-success" href="{$FRAMEWORK.http_dir}/direct/index/cron_edit/"><i class="fa fa-plus-circle"></i> Добавить задание</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					<form class="save" action="/direct/save/cron/">	
+					<div class="table-responsive"><form class="save" action="/direct/save/company/">
+						<table data-sortable class="table table-hover table-striped">
+							<thead>
+								<tr>
+									<th>№</th>
+									{*<th style="width: 30px" data-sortable="false"><input type="checkbox" class="rows-check"></th>*}
+									<th>Наименование</th>
+									<th>Время старта</th>
+									<th>Время завершения</th>
+									<th>Время выполнения, мин.</th>
+									<th data-toggle="tooltip" title="Запускать каждые указанное количество минут">Интервал, мин.</th>
+									<th>Статус</th>
+									<th>Перезапуск</th>
+									<th data-sortable="false">Сохранить</th>
+									
+								</tr>
+							</thead>
+							
+							<tbody>
+							{foreach from=$DATA.CRON item=ELEMENT name=element}
+								<tr>
+									<td data-toggle="tooltip" title="Память: {($ELEMENT.memory/1024/1024)|round} Мб.">{$smarty.foreach.element.iteration}</td>
+									<td data-toggle="tooltip" title="Процесс: {$ELEMENT.pid}"><strong>{$ELEMENT.name}</strong></td>
+									<td>{$ELEMENT.time}</td>
+									<td>{$ELEMENT.time_end}</td>
+									<td data-toggle="tooltip" title="Время последнего выполнения: {$ELEMENT.time_difference} сек.">{assign var="time_difference_min" value="`$ELEMENT.time_difference/60`"}{$time_difference_min|ceil}</td>
+									<td data-toggle="tooltip" title="Максимальное время выполнения: {if !empty($ELEMENT.time_limit)}{$ELEMENT.time_limit} сек.{elseif !empty($DATA.CONFIG.max_execution_time)}{$DATA.CONFIG.max_execution_time} сек.{else}без ограничений{/if}">
+										<input type="text" name="interval[{$ELEMENT.id}]" value="{$ELEMENT.interval|round}" size="6">
+									</td>
+									<td>{if !empty($ELEMENT.expire) }<font color="color_red">Выполняется дольше обычного</font>{elseif $ELEMENT.status}Запущено{else}Ожидание{/if}</td>
+									<td><input type="checkbox" name="status[{$ELEMENT.id}]" value="0"></td>
+									<td>
+										<div class="btn-group btn-group-xs">
+											<button title="Сохранить" class="btn btn-default" type="submit"><i class="fa fa-save"></i></button>
+											<a title="Редактировать" class="btn btn-default" href="{$FRAMEWORK.http_dir}/direct/index/cron_edit/{$ELEMENT.id}"><i class="fa fa-edit"></i></a>											
+										</div>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+						<br><center><button class="btn btn-default" type="submit">Сохранить</button></center><br>
+					</div>
+					</form>
+						
+					{*<div class="data-table-toolbar">
+						<ul class="pagination">
+						  <li class="disabled"><a href="#">&laquo;</a></li>
+						  <li class="active"><a href="#">1</a></li>
+						  <li><a href="#">2</a></li>
+						  <li><a href="#">3</a></li>
+						  <li><a href="#">4</a></li>
+						  <li><a href="#">5</a></li>
+						  <li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>*}
+					
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

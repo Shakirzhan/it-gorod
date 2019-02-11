@@ -1,0 +1,1 @@
+<? $filesInfo = array( 'FILES' => array("/bitrix/css/concept.quiz/template_styles.css" => "154948335472994","/bitrix/css/concept.quiz/responsive.css" => "154948335413048",)); ?>

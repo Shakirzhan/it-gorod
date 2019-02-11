@@ -1,0 +1,1 @@
+<? echo CAdminMessage::ShowNote(GetMessage('MOD_UNINST_OK')); ?>

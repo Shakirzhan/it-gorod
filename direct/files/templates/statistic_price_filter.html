@@ -1,0 +1,182 @@
+
+					<div class="data-table-toolbar"><form class="filter" role="form" method="GET">
+							<div class="row">
+								<div class="col-md-3">
+									<select name="user" class="filter_user form-control" data-toggle="tooltip" title="Клиент">
+										<option value="">Клиент</option>
+										{if !empty($DATA.FILTER.USER.ELEMENT)}
+											{foreach from=$DATA.FILTER.USER.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.user} selected{/if}>{$VALUE.login} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="company" class="filter_company form-control" data-toggle="tooltip" title="Кампания">
+										<option value="">Кампания</option>
+										{if !empty($DATA.FILTER.COMPANY.ELEMENT)}
+											{foreach from=$DATA.FILTER.COMPANY.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.company} selected{/if}>{$VALUE.id} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="group" class="filter_group form-control" data-toggle="tooltip" title="Группа">
+										<option value="">Группа</option>
+										{if !empty($DATA.FILTER.GROUP.ELEMENT)}
+											{foreach from=$DATA.FILTER.GROUP.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.group} selected{/if}>{$VALUE.id} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+								<div class="col-md-3">
+									<select name="phrase" class="filter_phrase form-control" data-toggle="tooltip" title="Фраза">
+										<option value="">Фраза</option>
+										{if !empty($DATA.FILTER.PHRASE.ELEMENT)}
+											{foreach from=$DATA.FILTER.PHRASE.ELEMENT item=VALUE}
+												<option value="{$VALUE.id}"{if $VALUE.id==$DATA.PARAM.phrase} selected{/if}>{$VALUE.id} - {$VALUE.name}</option>
+											{/foreach}
+										{/if}
+									</select>
+								</div>
+							</div>
+
+							<div class="row" style="margin-top: 2px;">
+								<div class="col-md-3">
+									<select name="date_start" class="form-control" data-toggle="tooltip" title="Дата начала статистики">
+										<option value="">Дата начала</option>
+										{foreach from=$DATA.DATE item=VALUE}
+											<option value="{$VALUE}"{if $VALUE==$DATA.PARAM.date_start} selected{/if}>{$VALUE|date_format:'%d.%m.%Y'}</option>
+										{/foreach}
+									</select>
+								</div>							
+								<div class="col-md-3">
+									<select name="date_end" class="form-control" data-toggle="tooltip" title="Дата окончания статистики">
+										<option value="">Дата окончания</option>
+										{foreach from=$DATA.DATE item=VALUE}
+											<option value="{$VALUE}"{if $VALUE==$DATA.PARAM.date_end} selected{/if}>{$VALUE|date_format:'%d.%m.%Y'}</option>
+										{/foreach}
+									</select>
+								</div>	
+								{if $FRAMEWORK.controller!='direct/statistic/price'}<div class="col-md-3">
+									<select name="where" class="form-control" data-toggle="tooltip" title="Где искать">
+										<option value="1"{if $DATA.PARAM.where==1} selected{/if}>Кампании</option>
+										<option value="2"{if $DATA.PARAM.where==2} selected{/if}>Группы</option>
+										<option value="3"{if $DATA.PARAM.where==3} selected{/if}>Фразы</option>
+									</select>
+								</div>
+								{else}<div class="col-md-3">
+								{include file='statistic_export_button.html'}
+								</div>{/if}
+								
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="number" value="{if !empty($DATA.PARAM.number)}{$DATA.PARAM.number}{else}{$DATA.CONFIG.number}{/if}" data-toggle="tooltip" title="Количество записей" placeholder="Количество">
+								</div>	
+								<div class="col-md-2">	
+									<button class="btn btn-default" type="submit">Искать &#128269;</button>
+								</div>
+		
+							</div>
+							{if $FRAMEWORK.controller!='direct/statistic/price'}
+							<div class="row" style="margin-top: 2px;">
+								<div class="col-md-3">
+									<select name="sort" class="form-control" data-toggle="tooltip" title="Сортировка">
+										<option value="0"{if empty($DATA.PARAM.sort)} selected{/if}>Сортировка по умолчанию</option>
+										<option value="position"{if $DATA.PARAM.sort=='position'} selected{/if}>Сортировка по «позиции»&uarr;</option>
+										<option value="-position"{if $DATA.PARAM.sort=='-position'} selected{/if}>Сортировка по «позиции»&darr;</option>
+										<option value="position_show"{if $DATA.PARAM.sort=='position_show'} selected{/if}>Сортировка по «Позиция показа»&uarr;</option>
+										<option value="-position_show"{if $DATA.PARAM.sort=='-position_show'} selected{/if}>Сортировка по «Позиция показа»&darr;</option>
+										<option value="position_click"{if $DATA.PARAM.sort=='position_click'} selected{/if}>Сортировка по «Позиция клика»&uarr;</option>
+										<option value="-position_click"{if $DATA.PARAM.sort=='-position_click'} selected{/if}>Сортировка по «Позиция клика»&darr;</option>
+										<option value="position_value"{if $DATA.PARAM.sort=='position_value'} selected{/if}>Сортировка по «Позиция XML»&uarr;</option>
+										<option value="-position_value"{if $DATA.PARAM.sort=='-position_value'} selected{/if}>Сортировка по «Позиция XML»&darr;</option>
+										<option value="position_visible"{if $DATA.PARAM.sort=='position_visible'} selected{/if}>Сортировка по «Видимость, %»&uarr;</option>
+										<option value="-position_visible"{if $DATA.PARAM.sort=='-position_visible'} selected{/if}>Сортировка по «Видимость, %»&darr;</option>
+										
+										<option value="position1"{if $DATA.PARAM.sort=='position1'} selected{/if}>Сортировка по «Ставка 1 место»&uarr;</option>
+										<option value="-position1"{if $DATA.PARAM.sort=='-position1'} selected{/if}>Сортировка по «Ставка 1 место»&darr;</option>
+										<option value="position2"{if $DATA.PARAM.sort=='position2'} selected{/if}>Сортировка по «Ставка 2 место»&uarr;</option>
+										<option value="-position2"{if $DATA.PARAM.sort=='-position2'} selected{/if}>Сортировка по «Ставка 2 место»&darr;</option>
+										<option value="position3"{if $DATA.PARAM.sort=='position3'} selected{/if}>Сортировка по «Ставка 3 место»&uarr;</option>
+										<option value="-position3"{if $DATA.PARAM.sort=='-position3'} selected{/if}>Сортировка по «Ставка 3 место»&darr;</option>
+										<option value="position4"{if $DATA.PARAM.sort=='position4'} selected{/if}>Сортировка по «Ставка 4 место»&uarr;</option>
+										<option value="-position4"{if $DATA.PARAM.sort=='-position4'} selected{/if}>Сортировка по «Ставка 4 место»&darr;</option>
+										<option value="position5"{if $DATA.PARAM.sort=='position5'} selected{/if}>Сортировка по «Ставка 5 место»&uarr;</option>
+										<option value="-position5"{if $DATA.PARAM.sort=='-position5'} selected{/if}>Сортировка по «Ставка 5 место»&darr;</option>
+										<option value="position6"{if $DATA.PARAM.sort=='position6'} selected{/if}>Сортировка по «Ставка 6 место»&uarr;</option>
+										<option value="-position6"{if $DATA.PARAM.sort=='-position6'} selected{/if}>Сортировка по «Ставка 6 место»&darr;</option>
+										<option value="position7"{if $DATA.PARAM.sort=='position7'} selected{/if}>Сортировка по «Ставка 7 место»&uarr;</option>
+										<option value="-position7"{if $DATA.PARAM.sort=='-position7'} selected{/if}>Сортировка по «Ставка 7 место»&darr;</option>
+										<option value="position8"{if $DATA.PARAM.sort=='position8'} selected{/if}>Сортировка по «Ставка 8 место»&uarr;</option>
+										<option value="-position8"{if $DATA.PARAM.sort=='-position8'} selected{/if}>Сортировка по «Ставка 8 место»&darr;</option>
+										<option value="price1"{if $DATA.PARAM.sort=='price1'} selected{/if}>Сортировка по «Списываемая цена 1 место»&uarr;</option>
+										<option value="-price1"{if $DATA.PARAM.sort=='-price1'} selected{/if}>Сортировка по «Списываемая цена 1 место»&darr;</option>
+										<option value="price2"{if $DATA.PARAM.sort=='price2'} selected{/if}>Сортировка по «Списываемая цена 2 место»&uarr;</option>
+										<option value="-price2"{if $DATA.PARAM.sort=='-price2'} selected{/if}>Сортировка по «Списываемая цена 2 место»&darr;</option>
+										<option value="price3"{if $DATA.PARAM.sort=='price3'} selected{/if}>Сортировка по «Списываемая цена 3 место»&uarr;</option>
+										<option value="-price3"{if $DATA.PARAM.sort=='-price3'} selected{/if}>Сортировка по «Списываемая цена 3 место»&darr;</option>
+										<option value="price4"{if $DATA.PARAM.sort=='price4'} selected{/if}>Сортировка по «Списываемая цена 4 место»&uarr;</option>
+										<option value="-price4"{if $DATA.PARAM.sort=='-price4'} selected{/if}>Сортировка по «Списываемая цена 4 место»&darr;</option>
+										<option value="price5"{if $DATA.PARAM.sort=='price5'} selected{/if}>Сортировка по «Списываемая цена 5 место»&uarr;</option>
+										<option value="-price5"{if $DATA.PARAM.sort=='-price5'} selected{/if}>Сортировка по «Списываемая цена 5 место»&darr;</option>
+										<option value="price6"{if $DATA.PARAM.sort=='price6'} selected{/if}>Сортировка по «Списываемая цена 6 место»&uarr;</option>
+										<option value="-price6"{if $DATA.PARAM.sort=='-price6'} selected{/if}>Сортировка по «Списываемая цена 6 место»&darr;</option>
+										<option value="price7"{if $DATA.PARAM.sort=='price7'} selected{/if}>Сортировка по «Списываемая цена 7 место»&uarr;</option>
+										<option value="-price7"{if $DATA.PARAM.sort=='-price7'} selected{/if}>Сортировка по «Списываемая цена 7 место»&darr;</option>
+										<option value="price8"{if $DATA.PARAM.sort=='price8'} selected{/if}>Сортировка по «Списываемая цена 8 место»&uarr;</option>
+										<option value="-price8"{if $DATA.PARAM.sort=='-price8'} selected{/if}>Сортировка по «Списываемая цена 8 место»&darr;</option>
+										
+				
+										<option value="price"{if $DATA.PARAM.sort=='price'} selected{/if}>Сортировка по «ставке»&uarr;</option>
+										<option value="-price"{if $DATA.PARAM.sort=='-price'} selected{/if}>Сортировка по «ставке»&darr;</option>
+										<option value="real_price"{if $DATA.PARAM.sort=='real_price'} selected{/if}>Сортировка по «списываемой цене»&uarr;</option>
+										<option value="-real_price"{if $DATA.PARAM.sort=='-real_price'} selected{/if}>Сортировка по «списываемой цене»&darr;</option>	
+										<option value="sum"{if $DATA.PARAM.sort=='sum'} selected{/if}>Сортировка по «расходу»&uarr;</option>
+										<option value="-sum"{if $DATA.PARAM.sort=='-sum'} selected{/if}>Сортировка по «расходу»&darr;</option>
+										<option value="show"{if $DATA.PARAM.sort=='show'} selected{/if}>Сортировка по «показам»&uarr;</option>
+										<option value="-show"{if $DATA.PARAM.sort=='-show'} selected{/if}>Сортировка по «показам»&darr;</option>
+										<option value="click"{if $DATA.PARAM.sort=='click'} selected{/if}>Сортировка по «кликам»&uarr;</option>
+										<option value="-click"{if $DATA.PARAM.sort=='-click'} selected{/if}>Сортировка по «кликам»&darr;</option>
+										<option value="ctr"{if $DATA.PARAM.sort=='ctr'} selected{/if}>Сортировка по «CTR»&uarr;</option>
+										<option value="-ctr"{if $DATA.PARAM.sort=='-ctr'} selected{/if}>Сортировка по «CTR»&darr;</option>
+										<option value="conversion"{if $DATA.PARAM.sort=='conversion'} selected{/if}>Сортировка по «конверсиям»&uarr;</option>
+										<option value="-conversion"{if $DATA.PARAM.sort=='-conversion'} selected{/if}>Сортировка по «конверсиям»&darr;</option>
+										<option value="roi"{if $DATA.PARAM.sort=='roi'} selected{/if}>Сортировка по «ROI»&uarr;</option>
+										<option value="-roi"{if $DATA.PARAM.sort=='-roi'} selected{/if}>Сортировка по «ROI»&darr;</option>
+										<option value="revenue"{if $DATA.PARAM.sort=='revenue'} selected{/if}>Сортировка по «доходу»&uarr;</option>
+										<option value="-revenue"{if $DATA.PARAM.sort=='-revenue'} selected{/if}>Сортировка по «доходу»&darr;</option>										
+
+									</select>
+								</div>
+
+								{if !empty($DATA.PARAM.where) AND $DATA.PARAM.where==3}
+								<div class="col-md-3">
+									<select name="place" class="form-control" data-toggle="tooltip" title="Позиция">
+										<option value="0"{if empty($DATA.PARAM.place)} selected{/if}>Все позиции</option>
+										<option class="color_red" value="-1"{if $DATA.PARAM.place==-1} selected{/if}>Не видно или 2 страница &empty;</option>
+										<option class="color_yellow" value="1"{if $DATA.PARAM.place==1} selected{/if}>1 место спец. &uarr;</option>
+										<option class="color_yellow" value="2"{if $DATA.PARAM.place==2} selected{/if}>2 место спец. &uarr;</option>
+										<option class="color_yellow" value="3"{if $DATA.PARAM.place==3} selected{/if}>3 место спец. &uarr;</option>
+										<option class="color_yellow" value="4"{if $DATA.PARAM.place==4} selected{/if}>4 место спец. &uarr;</option>
+										<option class="color_green" value="5"{if $DATA.PARAM.place==5} selected{/if}>5 место гарантии &darr;</option>
+										<option class="color_green" value="6"{if $DATA.PARAM.place==6} selected{/if}>6 место гарантии &darr;</option>
+										<option class="color_green" value="7"{if $DATA.PARAM.place==7} selected{/if}>7 место гарантии &darr;</option>
+										<option class="color_green" value="8"{if $DATA.PARAM.place==8} selected{/if}>8 место гарантии &darr;</option>
+
+									</select>
+								</div>
+								<div class="col-md-1" title="Отобрать по списываемой цене">
+									<span data-toggle="tooltip" title="Отобрать по списываемой цене">Цена</span> <input type="checkbox" name="real" value="1"{if !empty($DATA.PARAM.real)} checked{/if} />
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="price1" value="{if !empty($DATA.PARAM.price1)}{$DATA.PARAM.price1}{/if}" data-toggle="tooltip" title="Ставка больше" placeholder=">">
+								</div>
+								<div class="col-md-1">
+									<input type="text" class="form-control" name="price2" value="{if !empty($DATA.PARAM.price1)}{$DATA.PARAM.price2}{/if}" data-toggle="tooltip" title="Ставка меньше" placeholder="<">
+								</div>
+								{/if}							
+							</div>{/if}
+						</form></div>
+					

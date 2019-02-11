@@ -1,0 +1,168 @@
+.services-2 {
+	padding: 0 15px;
+	position: relative;
+}
+.service-2 {
+	padding: 40px 40px 80px 40px;
+	&--title {
+		@extend h3;
+		font-weight: 500;
+		font-size: 1.4em;
+		color: $defaultColor;
+	}
+	&--text {
+		height: 250px;
+		overflow: hidden;
+		&:after {
+			content: "";
+		    position: absolute;
+		    bottom: 80px;
+		    left: 0;
+		    width: 100%;
+		    top: 0;
+		    box-shadow: inset 0 -150px 30px -130px #ffffff;
+		}
+	}
+	&--descr {
+		margin-top: 40px;
+		color: transparentize($defaultColor, 0.3);
+		position: relative;
+	}
+	&--more {
+		position: absolute;
+		bottom: 40px;
+	}
+	&--link {
+		display: block;
+	}
+	&_nolink {
+		padding: 40px;
+	}
+	&_nolink .service-2--text {
+		height: 290px;
+		&:after {
+			bottom: 40px;
+		}
+	}
+}
+.services-2_chess [class*="col-md-"] {
+	padding: 0;
+}
+
+@media (min-width: 1199px) {
+	/*2 column*/
+	.services-2_chess [class*="col-lg-6"]:nth-child(3n+1) .service-2 {
+		background: #ffffff;
+	}
+	.services-2_chess [class*="col-lg-6"]:nth-child(4n+1) .service-2,
+	.services-2_chess [class*="col-lg-6"]:nth-child(4n+4) .service-2,
+	.services-2_chess [class*="col-lg-6"]:nth-child(4n+5) .service-2,
+	.services-2_chess [class*="col-lg-6"]:nth-child(4n+8) .service-2 {
+	    background-color: $bgcolor;
+	    &--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $bgcolor;
+			}
+		}
+	}
+	/*end 2 column*/
+
+	/*4 column*/
+	.services-2_chess [class*="col-lg-3"]:nth-child(2n+1) .service-2 {
+		background: #ffffff;
+	}
+	.services-2_chess [class*="col-lg-3"]:nth-child(8n+1) .service-2,
+	.services-2_chess [class*="col-lg-3"]:nth-child(8n+3) .service-2,
+	.services-2_chess [class*="col-lg-3"]:nth-child(8n+6) .service-2,
+	.services-2_chess [class*="col-lg-3"]:nth-child(8n+8) .service-2 {
+	    background-color: $bgcolor;
+	    &--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $bgcolor;
+			}
+		}
+	}
+	/*end 4 column*/
+
+	/*3 column*/
+	.services-2_chess [class*="col-lg-4"]:nth-child(2n+1) .service-2 {
+		background-color: $bgcolor;
+		&--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $bgcolor;
+			}
+		}
+	}
+	/*end 3 column*/
+}
+
+
+@media (min-width: 767px) and (max-width: 1197px) {
+	/*2 column*/
+	.services-2_chess [class*="col-md-"]:nth-child(3n+1) .service-2 {
+		background: #ffffff;
+	}
+	.services-2_chess [class*="col-md-"]:nth-child(4n+1) .service-2,
+	.services-2_chess [class*="col-md-"]:nth-child(4n+4) .service-2,
+	.services-2_chess [class*="col-md-"]:nth-child(4n+5) .service-2,
+	.services-2_chess [class*="col-md-"]:nth-child(4n+8) .service-2 {
+	    background-color: $bgcolor;
+	    &--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $bgcolor;
+			}
+		}
+	}
+	/*end 2 column*/
+}
+
+@include mq('sm', max) {
+	.services-2_chess [class*="col-md-"]:nth-child(2n+1) .service-2 {
+		background: $bgcolor;
+		&--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $bgcolor;
+			}
+		}
+	}
+	
+}
+@include mq('xs', max) {
+	.service-2 {
+		&--descr {
+			margin-top: 20px;
+		}
+	}
+}
+.services-2_chess [class*="col-md-"] .service-2, .services-2_standart [class*="col-md-"] .service-2 {
+	&:hover {
+		background: $accentColor!important;
+		color: #ffffff;
+		.service-2--descr, .service-2--more a, .service-2--title {
+			color: $inverse;
+		}
+		.link_underline {
+			border-bottom: 1px solid $inverse;
+		}
+		.icon-rounded {
+			margin-left: 10px;
+			transition-duration: 0.3s;
+		}
+	}	
+}
+.services-2_chess [class*="col-md-"] .service-2:hover .service-2--text:after {
+	box-shadow: inset 0 -150px 30px -130px $accentColor!important;
+}
+
+/*Стандартный вид*/
+.services-2_standart [class*="col-md-"] {
+	border: 1px solid $bgcolor;
+	padding: 0;
+	&:hover {
+		.service-2--text {
+			&:after {
+				box-shadow: inset 0 -150px 30px -130px $accentColor;
+			}
+		}
+	}
+}

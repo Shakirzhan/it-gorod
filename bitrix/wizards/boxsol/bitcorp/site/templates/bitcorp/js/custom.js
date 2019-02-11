@@ -1,0 +1,1 @@
+/* Pishite svoi JS v etom file. Pri obnovlenii shablona etot file ne zatretca*/

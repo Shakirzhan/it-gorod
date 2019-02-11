@@ -1,0 +1,18 @@
+				<!-- Your awesome content goes here -->				
+				
+				<div class="box-info full">
+					<h2><strong>{$DATA.ARTICLE.ELEMENT[0].name}</strong></h2>
+						
+					{if ($USER.group==1) }
+					{$DATA.ARTICLE.ELEMENT[0].body}
+					{else}
+					{$DATA.ARTICLE.ELEMENT[0].body|regex_replace:"/<!--admin-->(.+)<!--\/admin-->/isU":""}
+					{/if}
+					
+				</div>
+				
+				
+				
+				
+				
+				<!-- End of your awesome content -->

@@ -1,0 +1,133 @@
+.nav-tabs, .content-wrapper .nav-tabs {
+	border-bottom: 1px solid $bgcolor;
+	li {
+		list-style: none;
+		float: left;
+		margin: 0;
+		padding: 0;
+		
+		&:before, &:after {
+			display: none;
+		}
+		a {
+			border-width: 1px;
+			border-color: $bgcolor;
+			border-style: solid;
+			display: block;
+			padding: 12px 30px;
+			margin: 0 -1px -1px 0;
+			color: transparentize($defaultColor, 0.3);
+			position: relative;
+			@include br(2px);
+		}
+		&.active {
+			a {
+				font-weight: bold;
+				color: $defaultColor;
+				border-bottom-color: #ffffff;
+				z-index: 3;
+				&:before {
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					height: 3px;
+					background-color: $accentColor;
+					content: "";
+				}
+			}
+		}
+	}
+	@media (max-width:767px) {
+		li {
+			float: none;
+			width: 100%;
+			display: block;
+
+			&.active {
+				a {
+					font-weight: bold;
+					color: $defaultColor;
+					border-bottom-color: $bgcolor;
+					z-index: 3;
+					&:before {
+						position: absolute;
+						top: 0;
+						left: 0;
+						bottom: 0;
+						right: auto;
+						height: 100%;
+						width: 3px;
+						background-color: $accentColor;
+						content: "";
+					}
+				}
+			}
+		}
+	}
+}
+.tab {
+	&-content {
+		margin-top: 30px;
+	}
+	&-pane {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
+
+.char {
+	position: relative;
+	padding: 5px 0;
+
+	&--left {
+		float: left; 
+		width: 50%;
+		span {
+			background-color: #ffffff;
+			padding-right: 15px; 
+		}
+	}
+	&--right {
+		float: left; 
+		width: 50%;
+		text-align: right;
+		span {
+			background-color: #ffffff;
+			padding-left: 15px; 
+		}
+	}
+	&:before {
+		border-bottom: 1px dotted transparentize($defaultColor, 0.7);
+		position: absolute;
+		top: 15px;
+		left: 0;
+		right: 0;
+		height: 3px;
+		content: "";
+		visibility: visible;
+		z-index: -1;
+	}
+	
+}
+
+
+.content-wrapper .video {
+	margin: 30px 0;
+}
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+  margin: 0 auto;
+  width: 100%;
+
+  iframe {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+}

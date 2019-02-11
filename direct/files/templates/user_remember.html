@@ -1,0 +1,29 @@
+{if (empty($USER))}
+	<!-- Begin page -->
+	<div class="container">
+		<div class="full-content-center animated fadeInDownBig">
+			<a href=""><img src="{$FRAMEWORK.http_dir}/files/templates/assets/img/logo-login.png" class="logo-login img-circle" alt="Logo"></a>
+			<div class="login-wrap">
+				<div class="box-info">
+				<h2 class="text-center"><strong>{if $language=='en'}Forgot{else}Забыли{/if}</strong> {if $language=='en'}password{else}пароль{/if}</h2>
+				
+					<form role="form" class="save" action="/user/controller/remember_mail/" title="Пароль выслан на email">
+						<div class="form-group login-input">
+						<i class="fa fa-user overlay"></i>
+						<input type="text" name="login" class="form-control text-input" placeholder="{if $language=='en'}Your email{else}Ваш логин{/if}">
+						</div>
+						
+						 {if $smarty.server.HTTP_HOST=='demo.direct-automate.ru'}{else}<button type="submit" class="btn btn-success btn-block"><i class="fa fa-lock"></i> {if $language=='en'}Reset Password{else}Выслать пароль{/if}</button>{/if}
+					</form>
+				</div>
+				<p class="text-center"><a href="{$FRAMEWORK.http_dir}/user/contorller/login/"><i class="fa fa-sign-in"></i> {if $language=='en'}Back to login{else}Авторизация{/if}</a></p>
+			</div>
+			
+		</div>
+	</div>
+	<!-- End of page -->
+	{else}
+				<center>
+                  <p>{if $language=='en'}Logged{else}Вы авторизованы!{/if}</p>
+				 </center>
+	{/if}

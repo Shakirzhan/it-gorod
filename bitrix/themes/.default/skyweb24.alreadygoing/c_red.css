@@ -1,0 +1,25 @@
+.alreadygoing.c_red {
+    background: #ecf0f1;
+    }
+
+.c_red {
+
+    }
+    .c_red .text {
+        color: #2c3e50;
+        }
+        .c_red .text h2 {
+            color: #c0392b;
+            }
+        .c_red .text h3 {
+            color: #c0392b;
+            }
+        .c_red .text .info {
+
+            }
+        .c_red .text .going_link {
+            background: #c0392b;
+            }
+        .c_red .text .going_link:hover {
+            background: #e74c3c;
+            }
